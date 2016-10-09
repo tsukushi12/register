@@ -1,6 +1,6 @@
 module ApplicationHelper
   def qrcode_tag(text, option = {})
-    ::RQRCode::QRCode.new(text).as_html(option).html_safe
+    ::RQRCode::QRCode.new(text).as_svg(option).html_safe
   end
 
 end
