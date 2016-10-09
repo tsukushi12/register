@@ -1,12 +1,18 @@
-
+<%= alert %>
+<div class="errors">
   <% @user.errors.full_messages.each do |msg| %>
     <%= msg %>
   <% end %>
+</div>
 
-<%= alert %>
+<p class="time">Attraction Time : <span><%= @attr.time.strftime("%m/%d %H:%M") %></span></p>
 
-<p>登録フォーム</p>
-<%= form_for @user, url: reserve_register_path(@attr.id) do |f| %>
-  <%= f.email_field :addr %>
-  <%= f.submit "送信"%>
-<% end %>
+<h2>Please enter your Email address.</h2>
+<div id="email" class="cf">
+  <%= form_for @user, url: reserve_register_path(@attr.id) do |f| %>
+    <%= f.email_field :addr, id: 'email_field', placeholder: 'Email Address' %>
+    <%= button_tag(type: 'submit', id: 'register') do %>
+      Register<span class="space">&thinsp;</span>
+    <% end %>
+  <% end %>
+</div>
