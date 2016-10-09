@@ -1,4 +1,4 @@
-<% if @err %>
+<% unless @err.empty? %>
   <%= @err %>
 <% else %>
   <p>登録が完了しました</p>

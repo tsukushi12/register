@@ -6,9 +6,9 @@ class RegistMailer < ApplicationMailer
   #
   #   en.regist_mailer.regist_bmail.subject
   #
-  def regist_bmail(user)
+  def regist_bmail(user, attr)
     @user = user
-
+    @attr = attr
     mail to: @user.addr, subject: "test"
   end
 
@@ -17,9 +17,9 @@ class RegistMailer < ApplicationMailer
   #
   #   en.regist_mailer.regist_amail.subject
   #
-  def regist_amail(user)
+  def regist_amail(user, attr)
     @user = user
-
+    @attr = attr
     mail to: @user.addr, subject: "test"
   end
 end

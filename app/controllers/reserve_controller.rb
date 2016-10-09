@@ -16,7 +16,7 @@ class ReserveController < ApplicationController
   end
 
   def register
-    redirect_to action: :form, alert: "すでに座席が埋まってしまいました" unless @attr.status == 0
+    redirect_to(reserve_form_path, alert: "すでに座席が埋まってしまいました") unless @attr.status == 0
 
     require 'digest'
     addr = user_params[:addr]
@@ -24,7 +24,7 @@ class ReserveController < ApplicationController
 
       if @user.save
           @attr.update(status: 1)
-          RegistMailer.regist_bmail(@user).deliver
+          RegistMailer.regist_bmail(@user, @attr).deliver
       else
         render :form
       end
@@ -40,7 +40,7 @@ class ReserveController < ApplicationController
     if @err.empty?
         @user.update(status: 1)
         @attr.update(status: 2)
-        RegistMailer.regist_amail(@user).deliver
+        RegistMailer.regist_amail(@user, @attr).deliver
     end
   end
 
