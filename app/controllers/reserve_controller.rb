@@ -8,7 +8,10 @@ class ReserveController < ApplicationController
   end
 
   def seat_select
-    @id = params[:id]
+    @id = params[:id].to_i
+    if @id % 10 != 1 || @id > 500 || @id < 0
+      redirect_to root_path, alert: "ごめんね。URLが見つからないよ"
+    end
     @attrs = Attr.limit(10).offset(@id.to_i - 1)
   end
 
