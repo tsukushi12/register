@@ -15,5 +15,9 @@ class User < ApplicationRecord
         errors.add(:addr, 'すでに予約が完了したアドレスです')
       end
     end
-
+    def status_unique
+      if User.where(status: 1, attr_id: attr_id).exists?
+        errors.add(:attr_id, 'すでに座席が埋まってしまいました')
+      end
+    end
 end
