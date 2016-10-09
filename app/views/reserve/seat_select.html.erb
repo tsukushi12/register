@@ -1,4 +1,8 @@
 
 <% @attrs.each do |f| %>
-  <%= link_to f.id, reserve_form_path(f.id) %>
+  <% if f.status == 0%>
+    <%= link_to f.id, reserve_form_path(f.id) %>
+  <% else %>
+    <% f.id %>
+  <% end %>
 <% end %>
