@@ -6,9 +6,12 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=750, maximum-scale=1.0, user-scalable=yes">
   </head>
 
   <body>
-    <%= yield %>
+    <div id="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
