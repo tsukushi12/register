@@ -1,5 +1,6 @@
 class ReserveController < ApplicationController
   before_action :get_attr, :except => ['time_select', 'seat_select']
+  befor_action :attr_check, :only => ['time_select', 'seat_select']
 
   def time_select
     @attrs = Attr.all

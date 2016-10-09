@@ -1,7 +1,7 @@
 <% i = 0%>
 <% @attrs.each do |f| %>
   <% if f.seat == 0 %>
-    <%= link_to f.id, seat_select_path(f) %>
+    <%= link_to f.time, seat_select_path(f) %>
     <%= i %>
     <%i = 0%>
   <br>
