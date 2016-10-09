@@ -24,23 +24,25 @@ class ReserveController < ApplicationController
       if @user.save
           @attr.update(status: 1)
           RegistMailer.regist_bmail(@user, @attr).deliver
+          redirect_to(root_path, notice: "確認メールを送信したよ")
       else
         render :form
       end
   end
 
   def auth
-    @user = @attr.user.last
+    @user = @attr.user.last if @attr.user.last == User.where(url: params[:key]).last
 
-    @err = []
-    @err = "すでに座席が埋まってしまいました" unless @attr.status == 1
-    @err = "想定されていないURLです" unless @user
-    @err = "URLが失効しています" unless @user.id == User.where(url: params[:key]).last.id
-    if @err.empty?
+    if @attr.status == 1 && @user
       if @user.update(status: 1)
         @attr.update(status: 2)
         RegistMailer.regist_amail(@user, @attr).deliver
+        redirect_to root_path, notice: "予約が完了したよ。当日はメール画面を見せてね"
+      else
+        redirect_to root_path, alert: "ごめんね。座席が埋まってしまったみたい"
       end
+    else
+      redirect_to root_path, alert: "ごめんね。URLが見つからないよ"
     end
   end
 
@@ -50,7 +52,7 @@ class ReserveController < ApplicationController
   end
 
   def form_and_register_filter
-    redirect_to(root_path, {alert: "すでに座席が埋まってしまいました"}) unless @attr.status == 0
+    redirect_to(root_path, {alert: "ごめんね。座席が埋まってしまったみたい"}) unless @attr.status == 0
   end
 
   def attr_check
