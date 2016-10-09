@@ -1,6 +1,7 @@
 class ReserveController < ApplicationController
   before_action :get_attr, :except => ['time_select', 'seat_select']
   before_action :attr_check, :only => ['time_select', 'seat_select']
+  before_action :form_and_register_filter, :only => ['form', 'register']
 
   def time_select
     @attrs = Attr.all
@@ -16,8 +17,6 @@ class ReserveController < ApplicationController
   end
 
   def register
-    redirect_to(reserve_form_path, alert: "すでに座席が埋まってしまいました") unless @attr.status == 0
-
     require 'digest'
     addr = user_params[:addr]
     @user = @attr.user.build(addr: addr, url: Digest::SHA256.hexdigest(addr))
@@ -47,6 +46,10 @@ class ReserveController < ApplicationController
   private
   def get_attr
     @attr = Attr.find(params[:id])
+  end
+
+  def form_and_register_filter
+    redirect_to(root_path, {alert: "すでに座席が埋まってしまいました"}) unless @attr.status == 0
   end
 
   def attr_check
