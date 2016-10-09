@@ -1,3 +1,43 @@
 // Place all the styles related to the reserve controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@font-face {
+  font-family: 'Letter Gothic Std';
+  src: font-url('LetterGothicStd-BoldSlanted.otf');
+  font-weight: normal;
+  font-style: boldslanted;
+}
+body {
+  font-family: "Letter Gothic Std";
+}
+$gray-border: #666666;
+$orange-theme: #f8b500;
+#room-select {
+  font-size: 64px;
+  width: 154px;
+  height: 108px;
+  border: 2px $gray-border solid;
+  #room {
+    width: 100%;
+    height: 53px;
+    border-bottom: 2px $gray-border solid;
+  }
+  #btn-a, #btn-b {
+    width: 76px;
+    height: 53px;
+    button {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: none;
+      background-color: $orange-theme;
+    }
+  }
+  #btn-a {
+    float: left;
+    border-right: 2px $gray-border solid;
+  }
+  #btn-b {
+    float: right;
+  }
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="content-script-type" content="text/javascript">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title></title>
+	<!-- <link rel="stylesheet" href="./css/general.css" type="text/css"> -->
+	<link rel="stylesheet" href="../../../../../Desktop/drive-download-20161009T080521Z/test1-5/css/layout_room.css" type="text/css">
+	<!-- <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script> -->
+	<!-- <script type="text/javascript" src="./js/test.js"></script> -->
+	<script type="text/javascript">
+		function paraValue(paraName) {
+			var str = location.search.split("?");
+			if (str.length < 2) {	// =1:?の後の文字列がない=パラメタがない
+				return "";		// パラメタがないのでnullを戻す。
+			}
+			//  str[1]= "e=abc&j=日本語"
+			var params = str[1].split("&");
+			for (var i = 0; i < params.length; i++) {
+				var paraPair = params[i].split("=");
+				// paraPair[0]はパラメタの名称、 paraPair[1]はパラメタの値
+				if ( (paraPair[0] == paraName)	// パラメタの名称が指定した名称paraNameと一致
+				&& (paraPair.length == 2) ) {	// paraPairに名称と値がある
+					return decodeURIComponent(paraPair[1]);	// UTF-8にエンコードする（日本語の場合必要）
+				}
+			}
+			return "";	// for文が最後まで到達しても一致しなかったのでnullを戻す。
+		}
+		
+		function selectOption(obj, value) {
+			for (var i = 0, len = obj.length; i < len; i++) {
+				if (obj[i].value == value) {
+					obj[i].selected = true;
+					return;
+				}
+			}
+		}
+		
+		//var time = paraValue("time");
+		var day = paraValue("day");
+		var hour = paraValue("hour");
+		var minute = paraValue("minite");
+		var seats = paraValue("seats");
+		
+		function reserve(seat) {
+			flag = Math.floor(seats / Math.pow(10,(9 - seat)));
+			flag = flag % 10;
+			return flag;
+		}
+		
+		function indexGo() {
+			//日時データをリンクに追加する
+			location.href = "./index.html?day="+day+"&hour="+hour+"&minute="+minute;
+		}
+		
+		function reserveGo(seat) {
+			if (reserve(room*5+seat) == 0) {
+				//日時データをリンクに追加する
+				location.href = "./index.html?day="+day+"&hour="+hour+"&minute="+minute+"&seat="+seat;
+			}
+		}
+		
+		//画像を配列に格納する
+		var img = new Array();
+		img[0] = new Image();
+		img[0].src = "../img/修正２.png";
+		img[1] = new Image();
+		img[1].src = "../img/修正１.png";
+		//画像切り替え関数
+		var room = 0;
+		
+		function changeIMG(value) {
+			room = value;
+			if (room == 0) {
+				document.getElementById("roomA").src="../img/黄A.png";
+				document.getElementById("roomB").src="../img/白B.png";
+			} else {
+				document.getElementById("roomA").src="../img/白A.png";
+				document.getElementById("roomB").src="../img/黄B.png";
+			}
+			//画像を切り替える
+			document.getElementById("seatS1").src=img[reserve(room*5+0)].src;
+			document.getElementById("seatS2").src=img[reserve(room*5+1)].src;
+			document.getElementById("seatA1").src=img[reserve(room*5+2)].src;
+			document.getElementById("seatA2").src=img[reserve(room*5+3)].src;
+			document.getElementById("seatA3").src=img[reserve(room*5+4)].src;
+		}
+		
+		window.onload = function() {
+			changeIMG(0);
+		}
+	</script>
+</head>
+<body>
+	<a name="top" id="top"></a>
+	<article id="container">
+		<header id="gHeader">
+			<!-- <h1>Seat Reservation</h1> -->
+			<img src="../../../../../Desktop/drive-download-20161009T080521Z/img/logo.png" />
+		</header>
+		<section id="conts">
+			<div id="room">
+				<img id="roomN" src="../../../../../Desktop/drive-download-20161009T080521Z/img/部屋.png" alt="">
+				<img id="roomA" src="../../../../../Desktop/drive-download-20161009T080521Z/img/黄A.png" onclick="changeIMG(0)" alt="">
+				<img id="roomB" src="../../../../../Desktop/drive-download-20161009T080521Z/img/白B.png" onclick="changeIMG(1)" alt="">
+				<!-- <h2>Room</h2>
+				<form name="roomForm">
+					<input type="button" value="A" style="background:#F8B500" onClick="changeIMG(0)">
+					<input type="button" value="B" style="background:#AAA;color:#FFF" onClick="changeIMG(1)">
+				</form> -->
+			</div>
+			<p id="screen1">Screen</p>
+			<div id="seat1">
+				<img class="seats" id="seatS1" src="../../../../../Desktop/drive-download-20161009T080521Z/img/修正２.png" onclick="reserveGo(0)" alt="">
+				<p>S1</p>
+			</div>
+			<div id="seat2">
+				<img class="seats" id="seatS2" src="../../../../../Desktop/drive-download-20161009T080521Z/img/修正２.png" onclick="reserveGo(1)" alt="">
+				<p>S2</p>
+			</div>
+			<div id="seat3">
+				<img class="seats" id="seatA1" src="../../../../../Desktop/drive-download-20161009T080521Z/img/修正２.png" onclick="reserveGo(2)" alt="">
+				<p>S3</p>
+			</div>
+			<div id="seat4">
+				<img class="seats" id="seatA2" src="../../../../../Desktop/drive-download-20161009T080521Z/img/修正２.png" onclick="reserveGo(3)" alt="">
+				<p>A1</p>
+			</div>
+			<div id="seat5">
+				<img class="seats" id="seatA3" src="../../../../../Desktop/drive-download-20161009T080521Z/img/修正２.png" onclick="reserveGo(4)" alt="">
+				<p>A2</p>
+			</div>
+			<!-- <p id="price">S seat 300 yen<br/>A seat 200 yen</p> -->
+			<img id="price" src="../../../../../Desktop/drive-download-20161009T080521Z/img/アセット%2010.png" alt="">
+		</section>
+		<footer id="gFooter">
+			<!-- <form name="test">
+				<input type="button" value="Date" onClick="indexGo()">
+			</form> -->
+			<img id="date" src="../../../../../Desktop/drive-download-20161009T080521Z/img/date.png" onclick="indexGo()" alt="">
+		</footer>
+	</article>
+</body>
+</html>

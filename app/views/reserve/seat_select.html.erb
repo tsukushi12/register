@@ -1,8 +1,32 @@
-
-<% @attrs.each do |f| %>
-  <% if f.status == 0%>
-    <%= link_to f.id, reserve_form_path(f.id) %>
-  <% else %>
-    <% f.id %>
+<%= link_to image_tag('date.png'), root_url %>
+<div id="room-select">
+  <div id="room">room</div>
+  <div id="btn-a"><%= button_tag 'A' %></div>
+  <div id="btn-b"><%= button_tag 'B' %></div>
+</div>
+<div id="seat-select">
+  <div>
+    Screen
+  </div>
+  <% @attrs.each_with_index do |f, i| %>
+    <div class="seat-<%= i %>">
+      <% if f.status == 0%>
+        <%= link_to image_tag('seat.png', width: 100), reserve_form_path(f.id) %>
+      <% else %>
+        <%= image_tag('seat_soldout.png', width: 100) %>
+      <% end %>
+      <% case i % 5 + 1 %>
+        <% when 1 %>
+          S1
+        <% when 2 %>
+          S2
+        <% when 3 %>
+          A1
+        <% when 4 %>
+          A2
+        <% else %>
+          A3
+      <% end %>
+    </div>
   <% end %>
-<% end %>
+</div>
