@@ -1,13 +1,21 @@
 $gray-border: #666666;
 $orange-theme: #f8b500;
 
-@font-face {
-  font-family: 'Letter Gothic Std';
+/*@font-face {
+  font-family: 'Letter Gothic Std Bold Slanted';
   src: font-url('LetterGothicStd-BoldSlanted.otf');
+}*/
+@font-face {
+  font-family: "Letter Gothic Std Slanted";
+  src: font-url('LetterGothicStd-Slanted.otf');
 }
+
 body {
-  font-family: 'Letter Gothic Std';
+  font-family: 'Letter Gothic Std Slanted';
   color: $gray-border;
+}
+span.space {
+  font-stretch: ultra-condensed;
 }
 #container {
   width: 710px;
@@ -19,14 +27,13 @@ body {
 #date-btn {
   height: 108px;
   float: left;
-  margin-top: auto;
-  margin-bottom: auto;
   img {
     display: block;
+    margin-top: 20px;
   }
 }
 #room-select {
-  font-size: 3em;
+  font-size: 48px;
   text-align: center;
   line-height: 64px;
   width: 154px;
@@ -43,9 +50,6 @@ body {
     width: 76px;
     height: 53px;
     background-color: $orange-theme;
-    span {
-      font-stretch: ultra-condensed;
-    }
   }
   #btn-a {
     float: left;
@@ -58,6 +62,42 @@ body {
   }
 }
 #seat-select {
+  margin-top: 140px;
   clear: both;
   width: 100%;
+  #screen {
+    font-size: 48px;
+    font-family: "Letter Gothic Std Slanted";
+    width: 220px;
+    height: 60px;
+    margin: auto;
+    margin-bottom: 20px;
+    line-height: 70px;
+    border: 2px $gray-border solid;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    background-color: $orange-theme;
+  }
+  div[id*="seat-"] {
+    //height: 350px;
+    padding-left: 18px;
+    padding-right: 18px;
+    margin: 0;
+    float: left;
+    .seat-img {
+      width: 200px;
+      height: 260px;
+    }
+    .seat-label {
+      text-align: center;
+      font-size: 48px;
+    }
+  }
+  #seat-1, #seat-6 {
+    padding-left: 118px;
+  }
+  #seat-2, #seat-7 {
+    padding-right: 118px;
+  }
 }

@@ -3,32 +3,36 @@
 </div>
 <div id="room-select">
   <div id="room">Room<span class="space">&thinsp;</span></div>
-  <div id="btn-a">A<span>&thinsp;</span></div>
-  <div id="btn-b">B<span>&thinsp;</span></div>
+  <div id="btn-a">A<span class="space">&thinsp;</span></div>
+  <div id="btn-b">B<span class="space">&thinsp;</span></div>
 </div>
 <div id="seat-select">
-  <div>
-    Screen
+  <div id="screen">
+    Screen<span class="space">&thinsp;</span>
   </div>
   <% @attrs.each_with_index do |f, i| %>
-    <div class="seat-<%= i %>">
-      <% if f.status == 0%>
-        <%= link_to image_tag('seat.png', width: 200), reserve_form_path(f.id) %>
-      <% else %>
-        <%= image_tag('seat_soldout.png', width: 200) %>
-      <% end %>
-      <% case i % 5 + 1 %>
-        <% when 1 %>
-          S1
-        <% when 2 %>
-          S2
-        <% when 3 %>
-          A1
-        <% when 4 %>
-          A2
+    <div id="seat-<%= i + 1 %>">
+      <div class="seat-img">
+        <% if f.status == 0%>
+          <%= link_to image_tag('seat.png', width: 200), reserve_form_path(f.id) %>
         <% else %>
-          A3
-      <% end %>
+          <%= image_tag('seat_soldout.png', width: 200) %>
+        <% end %>
+      </div>
+      <div class="seat-label">
+        <% case i % 5 + 1 %>
+          <% when 1 %>
+            S1
+          <% when 2 %>
+            S2
+          <% when 3 %>
+            A1
+          <% when 4 %>
+            A2
+          <% else %>
+            A3
+        <% end %>
+      </div>
     </div>
   <% end %>
 </div>
