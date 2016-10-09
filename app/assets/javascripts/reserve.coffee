@@ -21,3 +21,12 @@ $ ->
     $room_b.fadeIn(500)
     $b.css(clicked)
     $a.css(click)
+#####################################################
+  date29 = []
+  date30 = []
+  for i in [1..25]
+    date29.push ".time-#{i}"
+    date30.push ".time-#{i+25}"
+  $date29 = $(date29.join(", "))
+  alert date29.join(", ")
+  $date29.hide()

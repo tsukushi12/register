@@ -6,6 +6,6 @@
 <%= "http://localhost:3000/reserve/auth/#{@user.attr_id}?key=#{@user.url}"%>
 
 <p>予約日時</p>
-<%= @attr.time..strftime("%m/%d %H:%M") %>
+<%= @attr.time.strftime("%m/%d %H:%M") %>
 <p>座席</p>
-<%= @attr.seat %>
+<%= seat_is(@attr.seat).join(" ") %>

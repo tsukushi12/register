@@ -4,6 +4,17 @@ module ApplicationHelper
   end
 
   def seat_is(number)
-    3
+    [
+      [:roomA, "S1"],
+      [:roomA, "S2"],
+      [:roomA, "A1"],
+      [:roomA, "A2"],
+      [:roomA, "A3"],
+      [:roomB, "S1"],
+      [:roomB, "S2"],
+      [:roomB, "A1"],
+      [:roomB, "A2"],
+      [:roomB, "A3"]
+    ][number]
   end
 end

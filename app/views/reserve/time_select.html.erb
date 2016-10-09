@@ -1,13 +1,23 @@
 <%= alert %>
+<%= notice %>
+
+
+<div id="room">Date<span class="space">&thinsp;</span></div>
+<div id="btn-a">29日<span class="space">&thinsp;</span></div>
+<div id="btn-b">30日<span class="space">&thinsp;</span></div>
 
 <% i = 0 %>
 <% @attrs.each do |f| %>
     <% if f.seat == 0 %>
-      <%= link_to f.time, seat_select_path(f) %>
+      <div class="time-<%= (f.id+9)/10 %>">
+        <%= link_to f.time.strftime("%H:%M"), seat_select_path(f) %>
+      </div>
     <% end %>
     <% i += 1 if f.status == 2 %>
     <% if f.seat == 9 %>
-      <%= i %>
+      <div class="time-<%= (f.id+1)/10 %>">
+        <%= i %>
+      </div>
       <% i = 0 %><br>
     <% end %>
 <% end %>

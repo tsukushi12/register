@@ -1,0 +1,15 @@
+確認メール
+\
+\
+※予約は完了していません。
+\
+下記のリンクを踏むことで予約が完了します。
+\
+このメールに心当たりのない場合は、リンクを踏まず削除してください。
+\
+http://localhost:3000/reserve/auth/#{@user.attr_id}?key=#{@user.url}
+
+予約日時
+= @attr.time..strftime("%m/%d %H:%M")
+座席
+= seat_is(@attr.seat).join(" ")
