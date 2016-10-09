@@ -1,5 +1,5 @@
-<% if @err %>
-  <% @err.join("\n") %>
+<% if @err.blank? %>
+  <%= @err %>
 <% else %>
   <p>登録が完了しました</p>
 <% end %>

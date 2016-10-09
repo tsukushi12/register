@@ -23,8 +23,8 @@ class ReserveController < ApplicationController
     @user = @attr.user.build(addr: addr, url: Digest::SHA256.hexdigest(addr))
 
       if @user.save
-        @attr.update!(status: 1)
-        RegistMailer.regist_bmail(@user).deliver
+          @attr.update(status: 1)
+          RegistMailer.regist_bmail(@user).deliver
       else
         render :form
       end
@@ -43,7 +43,6 @@ class ReserveController < ApplicationController
         RegistMailer.regist_amail(@user).deliver
     end
   end
-
 
   private
   def get_attr
