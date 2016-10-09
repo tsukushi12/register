@@ -1,4 +1,6 @@
-<%= alert %>
+<div id="seat-btn">
+  <%= link_to image_tag('date.png'), root_url %>
+</div>
 <div class="errors">
   <% @user.errors.full_messages.each do |msg| %>
     <%= msg %>

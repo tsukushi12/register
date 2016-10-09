@@ -1,0 +1,42 @@
+<div id="date-btn-sp">
+  <%= link_to image_tag('date.png', width: 120), root_path %>
+</div>
+<div id="room-select-sp">
+  <div id="room">Room<span class="space">&thinsp;</span></div>
+  <div id="btn-a">A<span class="space">&thinsp;</span></div>
+  <div id="btn-b">B<span class="space">&thinsp;</span></div>
+</div>
+<div id="seat-select-sp">
+  <div id="screen">
+    Screen<span class="space">&thinsp;</span>
+  </div>
+  <% @attrs.each_with_index do |f, i| %>
+      <div id="seat-<%= i + 1 %>">
+        <div class="seat-img">
+          <% if f.status == 0%>
+              <%= link_to image_tag('seat.png', width: 80), reserve_form_path(f.id) %>
+          <% else %>
+              <%= image_tag('seat_soldout.png', width: 80) %>
+          <% end %>
+        </div>
+        <div class="seat-label">
+          <% case i % 5 + 1 %>
+          <% when 1 %>
+              S1
+          <% when 2 %>
+              S2
+          <% when 3 %>
+              A1
+          <% when 4 %>
+              A2
+          <% else %>
+              A3
+          <% end %>
+        </div>
+      </div>
+  <% end %>
+  <p id="price">
+    S seat 400 yen<br>
+    A seat 300 yen
+  </p>
+</div>

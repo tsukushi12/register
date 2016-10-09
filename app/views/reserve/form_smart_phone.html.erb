@@ -1,0 +1,24 @@
+<div id="seat-btn-sp">
+  <%= link_to image_tag('date.png', width: 120), :back %>
+</div>
+
+<p class="time">Attraction Time<br><span><%= @attr.time.strftime("%m/%d %H:%M") %></span></p>
+
+<h2>Enter your Email address.</h2>
+
+<% if @user.errors.any? %>
+  <ul class="errors">
+    <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<div id="email-sp">
+  <%= form_for @user, url: reserve_register_path(@attr.id) do |f| %>
+    <%= f.email_field :addr, id: 'email_field', placeholder: 'Email Address' %>
+    <%= button_tag(type: 'submit', id: 'register') do %>
+      Register<span class="space">&thinsp;</span>
+    <% end %>
+  <% end %>
+</div>
