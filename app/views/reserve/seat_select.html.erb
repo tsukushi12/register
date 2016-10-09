@@ -1,4 +1,6 @@
-<%= link_to image_tag('date.png'), root_url %>
+<div id="date-btn">
+  <%= link_to image_tag('date.png'), root_url %>
+</div>
 <div id="room-select">
   <div id="room">Room<span class="space">&thinsp;</span></div>
   <div id="btn-a">A<span>&thinsp;</span></div>
@@ -11,9 +13,9 @@
   <% @attrs.each_with_index do |f, i| %>
     <div class="seat-<%= i %>">
       <% if f.status == 0%>
-        <%= link_to image_tag('seat.png', width: 100), reserve_form_path(f.id) %>
+        <%= link_to image_tag('seat.png', width: 200), reserve_form_path(f.id) %>
       <% else %>
-        <%= image_tag('seat_soldout.png', width: 100) %>
+        <%= image_tag('seat_soldout.png', width: 200) %>
       <% end %>
       <% case i % 5 + 1 %>
         <% when 1 %>

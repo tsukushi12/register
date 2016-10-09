@@ -7,8 +7,6 @@ $orange-theme: #f8b500;
 }
 body {
   font-family: 'Letter Gothic Std';
-  //font-weight: bold;
-  //font-style: italic;
   color: $gray-border;
 }
 #container {
@@ -17,6 +15,15 @@ body {
   padding-top: 20px;
   padding-left: 20px;
   padding-right: 20px;
+}
+#date-btn {
+  height: 108px;
+  float: left;
+  margin-top: auto;
+  margin-bottom: auto;
+  img {
+    display: block;
+  }
 }
 #room-select {
   font-size: 3em;
@@ -49,4 +56,8 @@ body {
     float: right;
     border-bottom-right-radius: 8px;
   }
+}
+#seat-select {
+  clear: both;
+  width: 100%;
 }
