@@ -1,6 +1,6 @@
 class ReserveController < ApplicationController
   before_action :get_attr, :except => ['time_select', 'seat_select']
-  befor_action :attr_check, :only => ['time_select', 'seat_select']
+  before_action :attr_check, :only => ['time_select', 'seat_select']
 
   def time_select
     @attrs = Attr.all
@@ -54,7 +54,7 @@ class ReserveController < ApplicationController
   end
 
   def attr_check
-    @attr = Attr.where(status: 1).where("update_at <= ?", Time.now - (60*60))
+    @attr = Attr.where(status: 1).where("updated_at <= ?", 1.hours.ago)
     @attr.update(status: 0) if @attr
   end
 

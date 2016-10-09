@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'reserve#time_select'
   get 'reserve/time_select', to: 'reserve#time_select', as: 'time_select'
   get 'reserve/seat_select/:id', to: 'reserve#seat_select', as: 'seat_select'
   get 'reserve/form/:id', to: 'reserve#form', as: 'reserve_form'
