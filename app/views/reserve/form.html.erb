@@ -1,0 +1,5 @@
+<p>登録フォーム</p>
+<%= form_tag reserve_register_path(@attr.id) do %>
+  <%= email_field :page, :email %>
+  <%= submit_tag "送信"%>
+<% end %>

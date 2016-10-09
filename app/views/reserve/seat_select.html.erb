@@ -1,0 +1,6 @@
+<script src=>
+var i = <%= @attrs.id %>
+</script>
+<% @attrs.each do |f| %>
+  <%= link_to f.id, reserve_form_path(f.id) %>
+<% end %>

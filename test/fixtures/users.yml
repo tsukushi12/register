@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  addr: MyString
+  url: MyString
+  status: 1
+  attr_id: 1
+
+two:
+  addr: MyString
+  url: MyString
+  status: 1
+  attr_id: 1
