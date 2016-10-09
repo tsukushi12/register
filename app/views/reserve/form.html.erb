@@ -1,5 +1,12 @@
+
+  <% @user.errors.full_messages.each do |msg| %>
+    <%= msg %>
+  <% end %>
+
+<%= alert %>
+
 <p>登録フォーム</p>
-<%= form_tag reserve_register_path(@attr.id) do %>
-  <%= email_field :page, :email %>
-  <%= submit_tag "送信"%>
+<%= form_for @user, url: reserve_register_path(@attr.id) do |f| %>
+  <%= f.email_field :addr %>
+  <%= f.submit "送信"%>
 <% end %>

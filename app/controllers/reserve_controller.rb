@@ -12,41 +12,38 @@ class ReserveController < ApplicationController
   end
 
   def form
+    @user = User.new
   end
 
   def register
-    raise unless @attr.status == 0
+    redirect_to action: :form, alert: "すでに座席が埋まってしまいました" unless @attr.status == 0
 
     require 'digest'
-    addr = params[:page][:email]
+    addr = user_params[:addr]
     @user = @attr.user.build(addr: addr, url: Digest::SHA256.hexdigest(addr))
 
-      @user.save!
-      @attr.update!(status: 1)
-      RegistMailer.regist_bmail(@user).deliver
-
-    rescue => e
-      @message = e.message
-      render :error
+      if @user.save
+        @attr.update!(status: 1)
+        RegistMailer.regist_bmail(@user).deliver
+      else
+        render :form
+      end
   end
 
   def auth
     @user = @attr.user.last
 
-    err = []
-    err = "すでに座席が埋まってしまいました" unless @attr.status == 1
-    err = "想定されていないURLです" unless @user
-    err = "URLが失効しています" unless @user.id == User.where(url: params[:key]).last.id
-    raise err unless err.empty?
-
+    @err = []
+    @err = "すでに座席が埋まってしまいました" unless @attr.status == 1
+    @err = "想定されていないURLです" unless @user
+    @err = "URLが失効しています" unless @user.id == User.where(url: params[:key]).last.id
+    if @err.empty?
         @user.update(status: 1)
         @attr.update(status: 2)
         RegistMailer.regist_amail(@user).deliver
-
-    rescue => e
-      @message = err
-      render :error
+    end
   end
+
 
   private
   def get_attr
@@ -56,6 +53,10 @@ class ReserveController < ApplicationController
   def attr_check
     @attr = Attr.where(status: 1).where("updated_at <= ?", 1.hours.ago)
     @attr.update(status: 0) if @attr
+  end
+
+  def user_params
+    params.require(:user).permit(:addr)
   end
 
 end
