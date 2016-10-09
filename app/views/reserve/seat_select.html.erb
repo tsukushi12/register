@@ -14,9 +14,9 @@
     <div id="seat-<%= i + 1 %>">
       <div class="seat-img">
         <% if f.status == 0%>
-          <%= link_to image_tag('seat.png', width: 200), reserve_form_path(f.id) %>
+          <%= link_to image_tag('seat.png', width: 180), reserve_form_path(f.id) %>
         <% else %>
-          <%= image_tag('seat_soldout.png', width: 200) %>
+          <%= image_tag('seat_soldout.png', width: 180) %>
         <% end %>
       </div>
       <div class="seat-label">
@@ -35,4 +35,11 @@
       </div>
     </div>
   <% end %>
+  <p id="price">
+    S seat 400 yen<br>
+    A seat 300 yen
+  </p>
+  <h1>
+    <%= image_tag 'logo.png' %>
+  </h1>
 </div>
