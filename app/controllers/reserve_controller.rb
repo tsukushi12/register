@@ -37,9 +37,10 @@ class ReserveController < ApplicationController
     @err = "想定されていないURLです" unless @user
     @err = "URLが失効しています" unless @user.id == User.where(url: params[:key]).last.id
     if @err.empty?
-        @user.update(status: 1)
+      if @user.update(status: 1)
         @attr.update(status: 2)
         RegistMailer.regist_amail(@user, @attr).deliver
+      end
     end
   end
 
