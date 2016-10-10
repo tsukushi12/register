@@ -29,7 +29,7 @@
     <% if f.seat == 9 %>
       <div class="time-table" id="time-<%= (f.id+1)/10 %>">
         <%= link_to f.time.strftime("%H:%M"), seat_select_path(f.id-9) %>
-        <meter min="0" max="10" low="3" high="5" optimum="10" value="<%= count %>"></meter>
+        <meter min="0" max="10" low="3" high="5" optimum="10" value="<%= count %>"><%= count*10 %>%</meter>
         <% count = 0 %>
       </div>
     <% end %>
