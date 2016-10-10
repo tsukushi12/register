@@ -203,8 +203,8 @@ ja:
 
     activerecord:
       models:
-        user: "ユーザ"
+        user: ユーザ
     attributes:
       user:
-        addr: "メールアドレス"
-        attr_id: "この"
+        addr: メールアドレス
+        attr_id: この

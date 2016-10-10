@@ -13,7 +13,7 @@
 <div id="email" class="cf">
   <%= form_for @user, url: reserve_register_path(@attr.id) do |f| %>
     <%= f.email_field :addr, id: 'email_field', placeholder: 'Email Address' %>
-    <%= button_tag(type: 'submit', id: 'register') do %>
+    <%= button_tag(type: 'submit', id: 'register', data: { :disable_with => "送信中..." }) do %>
       Register<span class="space">&thinsp;</span>
     <% end %>
   <% end %>
