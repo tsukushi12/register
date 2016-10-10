@@ -12,12 +12,12 @@ class User < ApplicationRecord
   private
     def addr_unique
       if User.where(addr: addr, status: 1).exists?
-        errors.add(:addr, 'はすでに登録されています')
+        errors.add("メールアドレス", 'はすでに登録されています')
       end
     end
     def status_unique
       if User.where(status: 1, attr_id: attr_id).exists?
-        errors.add(:attr_id, '座席はすでに埋まってしまいました')
+        errors.add("この", '座席はすでに埋まってしまいました')
       end
     end
 end

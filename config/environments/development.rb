@@ -64,5 +64,5 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
 #  ActiveRecord::Base.protected_environments = %w(development staging)
-config.i18n.default_locale = :ja
+
 end
