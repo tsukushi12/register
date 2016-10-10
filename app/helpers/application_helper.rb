@@ -17,4 +17,8 @@ module ApplicationHelper
       ["Room:B", "Seat:A3"]
     ][number]
   end
+  
+  def room_is(number)
+    number/10*10+1
+  end
 end
