@@ -21,3 +21,8 @@
 
 en:
   hello: "Hello world"
+
+ja:
+  view:
+    attr: "メールアドレス"
+    attr_id: "この"
