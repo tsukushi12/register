@@ -182,3 +182,40 @@ ul.errors {
   font-weight: bold;
   color: #730E15;
 }
+
+// 時間選択画面
+
+#date-select {
+  width: 100%;
+  text-align: center;
+  border: 2px $gray-border solid;
+  border-radius: 8px;
+  #room {
+    width: 100%;
+    height: 30px;
+    border-bottom: 2px $gray-border solid;
+  }
+  #date-29, #date-30 {
+    width: 50%;
+    height: 30px;
+    box-sizing: border-box;
+  }
+  #date-29 {
+    border-bottom-left-radius: 6px;
+    border-right: 1px $gray-border solid;
+    float: left;
+  }
+  #date-30 {
+    border-bottom-right-radius: 6px;
+    border-left: 1px $gray-border solid;
+    float: right;
+  }
+}
+#time-tables {
+  .time-table {
+    width: 100%;
+    height: 50px;
+    margin: 3px;
+    background-color: #666666;
+  }
+}

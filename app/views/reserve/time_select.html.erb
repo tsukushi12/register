@@ -8,6 +8,7 @@
 
 <% i = 0 %>
 <% @attrs.each do |f| %>
+  <div class="time-table">
     <% if f.seat == 0 %>
       <div class="time-<%= (f.id+9)/10 %>">
         <%= link_to f.time.strftime("%H:%M"), seat_select_path(f) %>
@@ -20,4 +21,5 @@
       </div>
       <% i = 0 %><br>
     <% end %>
+  </div>
 <% end %>

@@ -10,7 +10,18 @@ $ ->
   click =
     'background-color':'white'
     'color':'#666666'
-
+#################################
+  date29 = []
+  date30 = []
+  for i in [1..25]
+    date29.push ".time-#{i}"
+    date30.push ".time-#{i+25}"
+  $date29 = $(date29.join(", "))
+  $date30 = $(date30.join(", "))
+  $date30.hide()
+  $29 = $('#date-29').css(clicked)
+  $30 = $('#date-30').css(click)
+#################################
   $a.click ->
     $room_b.hide()
     $room_a.fadeIn(500)
@@ -21,13 +32,14 @@ $ ->
     $room_b.fadeIn(500)
     $b.css(clicked)
     $a.css(click)
-#####################################################
-  date29 = []
-  date30 = []
-  for i in [1..25]
-    date29.push ".time-#{i}"
-    date30.push ".time-#{i+25}"
-  $date29 = $(date29.join(", "))
-  $date30 = $(date30.join(", "))
-
-  $date30.hide()
+#################################
+  $29.click ->
+    $date30.hide()
+    $date29.fadeIn(500)
+    $29.css(clicked)
+    $30.css(click)
+  $30.click ->
+    $date29.hide()
+    $date30.fadeIn(500)
+    $30.css(clicked)
+    $29.css(click)

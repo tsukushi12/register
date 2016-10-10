@@ -1,0 +1,29 @@
+<%= alert %>
+<%= notice %>
+
+
+<div id="date-select" class="cf">
+  <div id="room">Date<span class="space">&thinsp;</span></div>
+  <div id="date-29">29日<span class="space">&thinsp;</span></div>
+  <div id="date-30">30日<span class="space">&thinsp;</span></div>
+</div>
+
+<div id="time-tables">
+  <% i = 0 %>
+  <% @attrs.each do |f| %>
+    <div class="time-table">
+      <% if f.seat == 0 %>
+        <div class="time-<%= (f.id+9)/10 %>">
+          <%= link_to f.time.strftime("%H:%M"), seat_select_path(f) %>
+        </div>
+      <% end %>
+      <% i += 1 if f.status == 2 %>
+      <% if f.seat == 9 %>
+        <div class="time-<%= (f.id+1)/10 %>">
+          <%= i %>
+        </div>
+        <% i = 0 %><br>
+      <% end %>
+    </div>
+  <% end %>
+</div>
