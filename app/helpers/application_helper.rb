@@ -5,16 +5,16 @@ module ApplicationHelper
 
   def seat_is(number)
     [
-      [:roomA, "S1"],
-      [:roomA, "S2"],
-      [:roomA, "A1"],
-      [:roomA, "A2"],
-      [:roomA, "A3"],
-      [:roomB, "S1"],
-      [:roomB, "S2"],
-      [:roomB, "A1"],
-      [:roomB, "A2"],
-      [:roomB, "A3"]
+      ["Room:A", "Seat:S1"],
+      ["Room:A", "Seat:S2"],
+      ["Room:A", "Seat:A1"],
+      ["Room:A", "Seat:A2"],
+      ["Room:A", "Seat:A3"],
+      ["Room:B", "Seat:S1"],
+      ["Room:B", "Seat:S2"],
+      ["Room:B", "Seat:A1"],
+      ["Room:B", "Seat:A2"],
+      ["Room:B", "Seat:A3"]
     ][number]
   end
 end
