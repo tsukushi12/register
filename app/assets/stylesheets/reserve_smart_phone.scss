@@ -246,15 +246,16 @@ ul.errors {
   border: 2px $gray-border solid;
   width: 100%;
   box-sizing: border-box;
+  border-radius: 5px;
   #time-label {
+    text-align: center;
+    width: 45%;
     float:left;
-    padding: 5px;
-    padding-left: 34px;
   }
   #progress-label {
+    text-align: center;
+    width: 55%;
     float: right;
-    padding: 5px;
-    padding-right: 60px;
   }
 }
 
@@ -269,6 +270,7 @@ div.flash {
   margin-left:-150px;
   .arrow-box {
     position: relative;
+    font-size: 1.3em;
     width: 145px;
     height: 120px;
     margin-left: 10px;

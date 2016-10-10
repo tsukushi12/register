@@ -43,3 +43,5 @@ $ ->
     $date30.fadeIn(500)
     $30.css(clicked)
     $29.css(click)
+#################################
+  $('div.flash').delay(5000).fadeOut(1000)
