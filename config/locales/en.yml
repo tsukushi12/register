@@ -23,6 +23,11 @@ en:
   hello: "Hello world"
 
 ja:
-  view:
-    attr: "メールアドレス"
-    attr_id: "この"
+  activerecord:
+    models:
+      user: "ユーザ"
+ja:
+  attributes:
+    user:
+      addr: "メールアドレス"
+      attr_id: "この"
