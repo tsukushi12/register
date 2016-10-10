@@ -14,8 +14,8 @@ $ ->
   date29 = []
   date30 = []
   for i in [1..25]
-    date29.push ".time-#{i}"
-    date30.push ".time-#{i+25}"
+    date29.push "#time-#{i}"
+    date30.push "#time-#{i+25}"
   $date29 = $(date29.join(", "))
   $date30 = $(date30.join(", "))
   $date30.hide()

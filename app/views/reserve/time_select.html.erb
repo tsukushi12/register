@@ -9,7 +9,7 @@
 <% @attrs.each do |f|%>
   <% count += 1 if f.status == 0 %>
   <% if f.seat == 9 %>
-    <div class="time<%= (f.id+1)/10 %>">
+    <div class="time-<%= (f.id+1)/10 %>">
       <%= link_to f.time.strftime("%H:%M"), seat_select_path(f.id-9) %>
       <%= count %>
       <% count = 0 %>
