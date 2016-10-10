@@ -18,7 +18,11 @@
 !/log/.keep
 !/tmp/.keep
 
+# Ignore precompiled asset files
+/public/assets
+
 # Ignore Byebug command history file.
 .byebug_history
 
+# Ignore editor setting files
 /.idea
