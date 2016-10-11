@@ -6,17 +6,20 @@
     公演時間<br><span><%= @attrs.first.time.strftime("%m/%d %H:%M") %></span>
   </p>
 </div>
-<div id="seat-select">
-  <div id="screen">
-    Screen<span class="space">&thinsp;</span>
-  </div>
+<div id="seat-select-pc">
   <% @attrs.each_with_index do |f, i| %>
-    <% if i == 0 %>
-      <div id="room-a">
-    <% elsif i == 5 %>
-      <div id="room-b">
+    <% if i == 0 || i == 5 %>
+        <div id="screen">
+          Screen<span class="space">&thinsp;</span>
+        </div>
+      <div class="each-room cf">
     <% end %>
-    <div id="seat-<%= i + 1 %>">
+    <% if i == 0 %>
+      <p class="room-name">Room A</p>
+    <% elsif i == 5 %>
+      <p class="room-name">Room B</p>
+    <% end %>
+    <div id="seat-<%= i + 1 %>-pc">
       <div class="seat-img">
         <% if f.status == 0%>
             <%= link_to image_tag('seat.png', width: 80), reserve_form_path(f.id) %>

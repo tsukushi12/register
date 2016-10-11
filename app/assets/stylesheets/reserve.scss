@@ -175,8 +175,13 @@ span.space {
   }
 }
 #seat-select {
-  clear: both;
   width: 300px;
+}
+#seat-select-pc {
+  width: 600px;
+}
+#seat-select, #seat-select-pc {
+  clear: both;
   margin: auto;
   margin-bottom: 20px;
   #screen {
@@ -194,6 +199,15 @@ span.space {
     text-align: center;
     background-color: $orange-theme;
   }
+  .room-name {
+    font-size: 24px;
+    text-align: center;
+    margin: 3px;
+  }
+  .each-room {
+    width: 300px;
+    float: left;
+  }
   div[id*="seat-"] {
     width: 100px;
     float: left;
@@ -207,7 +221,7 @@ span.space {
       font-size: 28px;
     }
   }
-  #seat-1, #seat-6 {
+  #seat-1, #seat-6, #seat-1-pc, #seat-6-pc {
     margin-left: 50px;
   }
   #price {
