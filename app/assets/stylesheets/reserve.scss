@@ -287,7 +287,7 @@ div.flash {
   left: 50%;
   width: 300px;
   height: 200px;
-  margin-top:-100px;
+  margin-top:-70px;
   margin-left:-150px;
   .arrow-box {
     position: relative;
@@ -313,14 +313,14 @@ div.flash {
   .arrow-box:after {
     border-color: rgba(237, 204, 147, 0);
     border-left-color: #edcc93;
-    border-width: 40px;
-    margin-top: -40px;
+    border-width: 20px;
+    margin-top: -20px;
   }
   .arrow-box:before {
     border-color: rgba(87, 65, 31, 0);
     border-left-color: #57411f;
-    border-width: 43px;
-    margin-top: -43px;
+    border-width: 23px;
+    margin-top: -23px;
   }
   img {
     display: block;
