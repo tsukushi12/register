@@ -2,4 +2,4 @@
 
 <p>キャンセルしてもいいですか？
 
-  <%= button_to 'はい', { action: :cancel, id: @attr.id, key: @user.url } %>
+  <%= button_to('はい', { action: :cancel, id: @attr.id, key: @user.url }, data: { :disable_with => "送信中..." }) %>
