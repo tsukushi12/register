@@ -10,7 +10,7 @@
 <%= @user.url[0..5] %>
 
 <p>予約をキャンセルする場合は、以下のリンクを踏んでください</p>
-<%= "http://localhost:3000/reserve/cancel_form/#{@user.attr_id}?key=#{@user.url}" %>
+<%= "http://#{host_name}/reserve/cancel_form/#{@user.attr_id}?key=#{@user.url}" %>
 
 神戸電子サウンドアトラクション
 宣伝大使ヴェルにゃん

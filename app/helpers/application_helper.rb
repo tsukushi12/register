@@ -21,4 +21,12 @@ module ApplicationHelper
   def room_is(number)
     number/10*10+1
   end
+  
+  def host_name
+    if ENV['G_HOST_NAME'].present?
+      ENV['G_HOST_NAME']
+    else
+      'localhost:3000'
+    end
+  end
 end

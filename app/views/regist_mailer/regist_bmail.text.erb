@@ -7,7 +7,7 @@
 \
 このメールに心当たりのない場合は、リンクを踏まず削除してください。
 \
-http://localhost:3000/reserve/auth/#{@user.attr_id}?key=#{@user.url}
+http://#{host_name}/reserve/auth/#{@user.attr_id}?key=#{@user.url}
 
 予約日時
 = @attr.time..strftime("%m/%d %H:%M")
