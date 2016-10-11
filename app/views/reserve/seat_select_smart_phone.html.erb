@@ -22,9 +22,9 @@
     <div id="seat-<%= i + 1 %>">
       <div class="seat-img">
         <% if f.status == 0%>
-            <%= link_to image_tag('seat.png', width: 80), reserve_form_path(f.id) %>
+            <%= link_to image_tag('seat.png', size: 80), reserve_form_path(f.id) %>
         <% else %>
-            <%= image_tag('seat_soldout.png', width: 80) %>
+            <%= image_tag('seat_soldout.png', size: 80) %>
         <% end %>
       </div>
       <div class="seat-label">

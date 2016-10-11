@@ -196,17 +196,15 @@ span.space {
   #screen {
     font-size: 24px;
     font-family: "Letter Gothic Std Slanted";
-    width: 250px;
-    height: 30px;
+    width: 130px;
+    height: 60px;
     margin: auto;
     margin-top: 10px;
-    margin-bottom: 10px;
-    line-height: 35px;
-    border: 2px $gray-border solid;
-    border-radius: 10px;
+    line-height: 65px;
+    border: 4px $gray-border solid;
     color: white;
     text-align: center;
-    background-color: $orange-theme;
+    background-color: #2E2F30;
   }
   .room-name {
     font-size: 24px;
@@ -220,9 +218,9 @@ span.space {
     width: 100px;
     float: left;
     .seat-img {
-      padding: 0 10px;
-      width: 90px;
-      height: 105px;
+      padding: 5px 10px;
+      width: 80px;
+      height: 80px;
     }
     .seat-label {
       text-align: center;
