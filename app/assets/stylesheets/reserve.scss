@@ -178,7 +178,16 @@ span.space {
   width: 300px;
 }
 #seat-select-pc {
-  width: 600px;
+  width: 624px;
+  .each-room {
+    width: 300px;
+    float: left;
+    border: 1px $gray-border solid;
+    border-radius: 8px;
+    margin: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
 }
 #seat-select, #seat-select-pc {
   clear: both;
@@ -206,7 +215,6 @@ span.space {
   }
   .each-room {
     width: 300px;
-    float: left;
   }
   div[id*="seat-"] {
     width: 100px;
