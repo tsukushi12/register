@@ -12,6 +12,7 @@
   <div id="screen">
     Screen<span class="space">&thinsp;</span>
   </div>
+  <% count = 0 %>
   <% @attrs.each_with_index do |f, i| %>
     <% if i == 0 || i == 5 %>
       <div class="each-room">
@@ -19,9 +20,14 @@
     <div id="seat-<%= i + 1 %>">
       <div class="seat-img">
         <% if f.status == 0%>
-            <%= link_to image_tag('seat.png', size: 80), reserve_form_path(f.id) %>
+          <% if i <= 4
+            count += 1
+           else
+            count -= 1
+           end %>
+          <%= link_to image_tag('seat.png', size: 80), reserve_form_path(f.id) %>
         <% else %>
-            <%= image_tag('seat_soldout.png', size: 80) %>
+          <%= image_tag('seat_soldout.png', size: 80) %>
         <% end %>
       </div>
       <div class="seat-label">
@@ -43,7 +49,7 @@
         </div>
     <% end %>
   <% end %>
-  <p class="price">
+  <p class="price" data-seat-id="<%= count %>">
     <span>前売り料金</span><br>
     S<span>席</span>: 300<span>円</span><br>
     A<span>席</span>: 200<span>円</span><br>

@@ -270,7 +270,7 @@ span.space {
     font-family: 'Letter Gothic Std Slanted';
     color: #666;
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 3px;
     border: solid 1px #ccc;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -325,6 +325,7 @@ ul.errors {
   line-height: 20px;
 }
 h2#email-description {
+  font-size: 12px;
   margin-top: 20px;
   margin-bottom: 3px;
 }
@@ -333,6 +334,7 @@ h2#email-description {
 // 吹き出し
 div.flash {
   position: fixed;
+  z-index: 100;
   top: 50%;
   left: 50%;
   width: 300px;

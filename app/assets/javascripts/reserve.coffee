@@ -8,9 +8,16 @@ $ ->
 #################################
   $room_a = $('#seat-1, #seat-2, #seat-3, #seat-4, #seat-5')
   $room_b = $('#seat-6, #seat-7, #seat-8, #seat-9, #seat-10')
-  $room_b.hide()
-  $a = $('#btn-a').css(clicked)
-  $b = $('#btn-b').css(click)
+  seat = 0
+  seat = $('p.price').data('seat-id')
+  if seat < 0
+    $a = $('#btn-a').css(click)
+    $b = $('#btn-b').css(clicked)
+    $room_a.hide()
+  else
+    $a = $('#btn-a').css(clicked)
+    $b = $('#btn-b').css(click)
+    $room_b.hide()
 #################################
   date29 = []
   date30 = []
