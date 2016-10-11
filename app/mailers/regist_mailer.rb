@@ -9,7 +9,7 @@ class RegistMailer < ApplicationMailer
   def regist_bmail(user, attr)
     @user = user
     @attr = attr
-    mail to: @user.addr, subject: "test"
+    mail to: @user.addr, subject: "確認メール"
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -20,6 +20,6 @@ class RegistMailer < ApplicationMailer
   def regist_amail(user, attr)
     @user = user
     @attr = attr
-    mail to: @user.addr, subject: "test"
+    mail to: @user.addr, subject: "ありがとうございます"
   end
 end
