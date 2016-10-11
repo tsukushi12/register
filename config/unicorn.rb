@@ -1,6 +1,6 @@
 worker_processes 2
 
-working_directory "/home/makino/register"
+working_directory "/home/#{ENV['USER']}/register"
 
 pid "/var/tmp/unicorn.pid"
 
