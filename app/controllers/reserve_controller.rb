@@ -56,8 +56,13 @@ class ReserveController < ApplicationController
   end
 
   def cancel
-    
-
+    if @user && @attr.status == 2 && @user.attr_id == @attr.id
+      @user.update(status: 2)
+      @attr.update(status: 0)
+      redirect_to root_path, notice: "予約をキャンセルしたよ。。。"
+    else
+      redirect_to root_path, alert: "ごめんね。URLがみつからないよ"
+    end
   end
 
   private

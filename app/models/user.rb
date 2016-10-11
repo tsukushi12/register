@@ -16,7 +16,7 @@ class User < ApplicationRecord
       end
     end
     def status_unique
-      if User.where(status: 1, attr_id: attr_id).exists?
+      if User.where(status: 1, attr_id: attr_id).exists? && status == 1
         errors.add("この", '座席はすでに埋まってしまいました')
       end
     end
