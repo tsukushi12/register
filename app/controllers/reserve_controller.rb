@@ -2,6 +2,7 @@ class ReserveController < ApplicationController
   before_action :get_attr, :except => ['time_select', 'seat_select']
   before_action :attr_check, :only => ['time_select', 'seat_select']
   before_action :form_and_register_filter, :only => ['form', 'register']
+  before_action :auth_and_cancel_filter, :only => ['auth', 'cancel_form', 'cancel']
 
   def time_select
     @attrs = Attr.all
@@ -34,19 +35,29 @@ class ReserveController < ApplicationController
   end
 
   def auth
-    @user = @attr.user.last if @attr.user.last == User.where(url: params[:key]).last
 
-    if @attr.status == 1 && @user
+    if @attr.status == 1 && @user && @user.attr_id == @attr.id
       if @user.update(status: 1)
         @attr.update(status: 2)
         RegistMailer.regist_amail(@user, @attr).deliver
-        redirect_to root_path, notice: "予約が完了したよ。当日はメール画面を見せてね"
+        redirect_to root_path, notice: "予約完了メールを送信したよ。当日はメール画面を見せてね"
       else
         redirect_to root_path, alert: "ごめんね。座席が埋まってしまったみたい"
       end
     else
       redirect_to root_path, alert: "ごめんね。URLが見つからないよ"
     end
+  end
+
+  def cancel_form
+    unless @user || @attr.status == 2 || @user.attr_id == @attr.id
+      redirect_to root_path, alert: "ごめんね。URLが見つからないよ"
+    end
+  end
+
+  def cancel
+    
+
   end
 
   private
@@ -61,6 +72,10 @@ class ReserveController < ApplicationController
   def attr_check
     @attr = Attr.where(status: 1).where("updated_at <= ?", 1.hours.ago)
     @attr.update(status: 0) if @attr
+  end
+
+  def auth_and_cancel_filter
+    @user = User.where(url: params[:key]).last
   end
 
   def user_params

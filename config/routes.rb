@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get 'reserve/form/:id', to: 'reserve#form', as: 'reserve_form'
   post 'reserve/register/:id', to: 'reserve#register', as: 'reserve_register'
   get 'reserve/auth/:id', to: 'reserve#auth', as: 'reserve_auth'
+  get 'reserve/cancel_form/:id', to: 'reserve#cancel_form', as: 'reserve_cancel_form'
+  post 'reserve/cansel/:id', to: 'reserve#cancel', as: 'reserve_cancel'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 
