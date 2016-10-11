@@ -1,43 +1,43 @@
+// カラーコード
 $gray-border: #666666;
 $orange-theme: #f8b500;
 
-/*@font-face {
-  font-family: 'Letter Gothic Std Bold Slanted';
-  src: font-url('LetterGothicStd-BoldSlanted.otf');
-}*/
+// カスタムフォント
 @font-face {
   font-family: "Letter Gothic Std Slanted";
   src: font-url('LetterGothicStd-Slanted.otf');
 }
 
+// ClearFix
 .cf:before,
 .cf:after {
   content: " ";
   display: table;
 }
-
 .cf:after {
   clear: both;
 }
-
 .cf {
   *zoom: 1;
 }
 
+// 全体設定
 body {
   font-family: 'Letter Gothic Std Slanted';
   color: $gray-border;
 }
 h1#logo {
+  margin-top: 20px;
   text-align: center;
 }
 h2 {
   text-align: center;
-  margin-bottom: 40px;
 }
 span.space {
   font-stretch: ultra-condensed;
 }
+
+// PC向け
 #container {
   width: 710px;
   margin: auto;
@@ -45,60 +45,144 @@ span.space {
   padding-left: 20px;
   padding-right: 20px;
 }
-#date-btn {
-  height: 108px;
-  float: left;
-  img {
-    display: block;
-    margin-top: 20px;
+// スマートフォン向け
+#container-sp {
+  width: 316px;
+  margin: auto;
+  margin-top: 2px;
+}
+
+// 時間選択画面
+#date-select {
+  width: 100%;
+  font-size: 20px;
+  text-align: center;
+  line-height: 35px;
+  border: 2px $gray-border solid;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  #room {
+    width: 100%;
+    height: 30px;
+    border-bottom: 2px $gray-border solid;
+  }
+  #date-29, #date-30 {
+    width: 50%;
+    height: 30px;
+    box-sizing: border-box;
+  }
+  #date-29 {
+    border-bottom-left-radius: 6px;
+    border-right: 1px $gray-border solid;
+    float: left;
+  }
+  #date-30 {
+    border-bottom-right-radius: 6px;
+    border-left: 1px $gray-border solid;
+    float: right;
   }
 }
+#date-label {
+  border: 1px $gray-border solid;
+  width: 100%;
+  line-height: 30px;
+  height: 30px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  #time-label {
+    text-align: center;
+    width: 45%;
+    float:left;
+  }
+  #progress-label {
+    text-align: center;
+    width: 55%;
+    float: right;
+  }
+}
+#time-tables {
+  .time-table {
+    width: 100%;
+    font-size: 30px;
+    text-align: center;
+    color: $gray-border;
+    border: 1px $gray-border solid;
+    height: 50px;
+    margin-top: 3px;
+    padding-top: 10px;
+    box-sizing: border-box;
+    background-color: white;
+    .left {
+      text-align: center;
+      width: 45%;
+      float: left;
+      a {
+        line-height: 35px;
+        &:link, &:visited, &hover, &active {
+          color: $gray-border;
+        }
+        text-decoration: none;
+      }
+    }
+    .right {
+      text-align: center;
+      width: 55%;
+      line-height: 35px;
+      float: right;
+    }
+  }
+}
+
+// 席の選択画面
 #room-select {
-  font-size: 48px;
+  font-size: 24px;
   text-align: center;
-  line-height: 64px;
-  width: 154px;
-  height: 108px;
+  line-height: 36px;
+  width: 120px;
+  height: 60px;
   border: 2px $gray-border solid;
-  border-radius: 10px;
+  border-radius: 8px;
+  margin-bottom: 30px;
   float: right;
   #room {
     background-color: white;
     width: 100%;
-    height: 53px;
+    height: 29px;
     border-bottom: 2px $gray-border solid;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
   }
   #btn-a, #btn-b {
-    width: 76px;
-    height: 53px;
+    width: 59px;
+    height: 29px;
   }
   #btn-a {
     float: left;
     border-right: 2px $gray-border solid;
-    border-bottom-left-radius: 8px;
+    border-bottom-left-radius: 6px;
     background-color: $orange-theme;
     color: white;
   }
   #btn-b {
     float: right;
-    border-bottom-right-radius: 8px;
+    border-bottom-right-radius: 6px;
     background-color: white;
   }
 }
 #seat-select {
-  margin-top: 110px;
   clear: both;
-  width: 100%;
+  width: 300px;
+  margin: auto;
+  margin-bottom: 20px;
   #screen {
-    font-size: 48px;
+    font-size: 24px;
     font-family: "Letter Gothic Std Slanted";
-    width: 320px;
-    height: 60px;
+    width: 250px;
+    height: 30px;
     margin: auto;
-    margin-bottom: 20px;
-    line-height: 70px;
+    margin-bottom: 10px;
+    line-height: 35px;
     border: 2px $gray-border solid;
     border-radius: 10px;
     color: white;
@@ -106,78 +190,142 @@ span.space {
     background-color: $orange-theme;
   }
   div[id*="seat-"] {
-    //height: 350px;
-    padding-left: 28px;
-    padding-right: 28px;
-    margin: 0;
+    width: 100px;
     float: left;
     .seat-img {
-      width: 180px;
-      height: 230px;
+      padding: 5px;
+      width: 90px;
+      height: 115px;
     }
     .seat-label {
       text-align: center;
-      font-size: 48px;
+      font-size: 28px;
     }
   }
   #seat-1, #seat-6 {
-    padding-left: 147px;
-  }
-  #seat-2, #seat-7 {
-    padding-right: 147px;
+    margin-left: 50px;
   }
   #price {
     clear: both;
-    font-size: 48px;
+    font-size: 28px;
     text-align: center;
-    padding-top: 15px;
+    padding-top: 20px;
     margin-bottom: 10px;
   }
 }
+
+// メールフォーム
 #email {
   #email_field {
     padding: 10px;
-    font-size: 1.3em;
+    font-size: 1.2em;
     font-family: 'Letter Gothic Std Slanted';
     color: #666;
+    width: 100%;
+    margin-bottom: 10px;
     border: solid 1px #ccc;
-    margin: 0 0 20px;
-    width: 560px;
-    float: left;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
   }
   #register {
     border: 1px $gray-border solid;
     background-color: white;
-    display: block;
-    width: 120px;
+    width: 100%;
     height: 45px;
-    padding-top: 8px;
+    padding-top: 2px;
     font-family: 'Letter Gothic Std Slanted';
     font-size: 18px;
     color: $gray-border;
-    float: right;
   }
 }
-.time {
-  text-align: center;
-  font-size: 24px;
-  span {
-    color: $orange-theme;
-  }
-}
-.errors {
-  text-align: center;
-  font-size: 20px;
-  font-weight: bold;
-  color: #730E15;
-}
-#seat-btn {
-  height: 108px;
-  width: 100%;
-  margin-bottom: 20px;
+#back-btn {
+  height: 52px;
+  margin-left: 5px;
+  padding-top: 12px;
   float: left;
   img {
     display: block;
-    margin-top: 20px;
+  }
+}
+div.time {
+  clear: both;
+  padding-top: 10px;
+  p {
+    text-align: center;
+    font-size: 18px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    span {
+      color: $orange-theme;
+      font-size: 24px;
+    }
+  }
+}
+ul.errors {
+  border: 1px #730E15 solid;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 5px;
+  padding-top: 10px;
+  text-align: center;
+  list-style-type: none;
+  font-size: 15px;
+  font-weight: bold;
+  color: #730E15;
+  line-height: 20px;
+}
+h2#email-description {
+  margin-top: 20px;
+}
+
+
+// 吹き出し
+div.flash {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 200px;
+  margin-top:-100px;
+  margin-left:-150px;
+  .arrow-box {
+    position: relative;
+    font-size: 1.3em;
+    width: 145px;
+    height: 120px;
+    margin-left: 10px;
+    padding: 10px;
+    background: #edcc93;
+    border: 2px solid #57411f;
+  }
+  .arrow-box:after, .arrow-box:before {
+    left: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .arrow-box:after {
+    border-color: rgba(237, 204, 147, 0);
+    border-left-color: #edcc93;
+    border-width: 40px;
+    margin-top: -40px;
+  }
+  .arrow-box:before {
+    border-color: rgba(87, 65, 31, 0);
+    border-left-color: #57411f;
+    border-width: 43px;
+    margin-top: -43px;
+  }
+  img {
+    display: block;
+    position: absolute;
+    top: -35px;
+    left: 160px;
   }
 }

@@ -1,18 +1,41 @@
-<%= alert %>
-<%= notice %>
-
-
-<div id="room">Date<span class="space">&thinsp;</span></div>
-<div id="date-29">29日<span class="space">&thinsp;</span></div>
-<div id="date-30">30日<span class="space">&thinsp;</span></div>
-<% count = 0 %>
-<% @attrs.each do |f|%>
-  <% count += 1 if f.status == 0 %>
-  <% if f.seat == 9 %>
-    <div class="time-<%= (f.id+1)/10 %>">
-      <%= link_to f.time.strftime("%H:%M"), seat_select_path(f.id-9) %>
-      <%= count %>
-      <% count = 0 %>
+<% if notice.present? || alert.present? %>
+    <div class="flash">
+      <div class="arrow-box">
+        <%= notice %><%= alert %>
+        <%= image_tag('character.png') %>
+      </div>
     </div>
-  <% end %>
+<% elsif alert.present? %>
+    <div class="arrow-box-red">
+      <%= alert %>
+    </div>
 <% end %>
+
+<div id="date-select" class="cf">
+  <div id="room">タイムテーブル<span class="space">&thinsp;</span></div>
+  <div id="date-29">Day 29<span class="space">&thinsp;</span></div>
+  <div id="date-30">Day 30<span class="space">&thinsp;</span></div>
+</div>
+
+<div id="date-label" class="cf">
+  <div id="time-label">開始時間</div>
+  <div id="progress-label">空席率</div>
+</div>
+
+<div id="time-tables">
+  <% count = 0 %>
+  <% @attrs.each do |f|%>
+      <% count += 1 if f.status == 0 %>
+      <% if f.seat == 9 %>
+          <div class="time-table" id="time-<%= (f.id+1)/10 %>">
+            <div class="left">
+              <%= link_to f.time.strftime("%H:%M"), seat_select_path(f.id-9) %>
+            </div>
+            <div class="right">
+              <%= count*10 %>%
+            </div>
+            <% count = 0 %>
+          </div>
+      <% end %>
+  <% end %>
+</div>
