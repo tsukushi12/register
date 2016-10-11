@@ -381,3 +381,29 @@ div.flash {
     left: 160px;
   }
 }
+
+div#cancel-form {
+  text-align: center;
+  h2 {
+    margin-top: 40px;
+    margin-bottom: 60px;
+    font-size: 24px;
+  }
+  p {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+  form {
+    margin-bottom: 50px;
+    input {
+      border: 1px $gray-border solid;
+      background-color: white;
+      width: 270px;
+      height: 45px;
+      padding-top: 2px;
+      font-family: 'Letter Gothic Std Slanted';
+      font-size: 18px;
+      color: $gray-border;
+    }
+  }
+}

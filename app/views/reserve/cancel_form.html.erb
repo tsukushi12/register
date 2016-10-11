@@ -1,5 +1,8 @@
-<h1>キャンセルフォーム</h1>
+<div id="cancel-form">
+  <h2>キャンセルフォーム</h2>
 
-<p>キャンセルしてもいいですか？
+  <p>予約をキャンセルしてもいいですか？</p>
 
-  <%= button_to('はい', { action: :cancel, id: @attr.id, key: @user.url }, data: { :disable_with => "送信中..." }) %>
+  <%= button_to('キャンセルする', { action: :cancel, id: @attr.id, key: @user.url },
+                data: { :disable_with => "処理中..." }) %>
+</div>
