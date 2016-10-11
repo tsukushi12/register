@@ -1,15 +1,16 @@
 $ ->
-  $room_a = $('#seat-1, #seat-2, #seat-3, #seat-4, #seat-5')
-  $room_b = $('#seat-6, #seat-7, #seat-8, #seat-9, #seat-10')
-  $room_b.hide()
-  $a = $('#btn-a')
-  $b = $('#btn-b')
   clicked =
     'background-color':'#f8b500'
     'color':'white'
   click =
     'background-color':'white'
     'color':'#666666'
+#################################
+  $room_a = $('#seat-1, #seat-2, #seat-3, #seat-4, #seat-5')
+  $room_b = $('#seat-6, #seat-7, #seat-8, #seat-9, #seat-10')
+  $room_b.hide()
+  $a = $('#btn-a').css(clicked)
+  $b = $('#btn-b').css(click)
 #################################
   date29 = []
   date30 = []
