@@ -6,6 +6,11 @@
   <div id="btn-a">A<span class="space">&thinsp;</span></div>
   <div id="btn-b">B<span class="space">&thinsp;</span></div>
 </div>
+<div class="time">
+  <p>
+    公演時間<br><span><%= @attrs.first.time.strftime("%m/%d %H:%M") %></span>
+  </p>
+</div>
 <div id="seat-select">
   <div id="screen">
     Screen<span class="space">&thinsp;</span>
@@ -14,9 +19,9 @@
       <div id="seat-<%= i + 1 %>">
         <div class="seat-img">
           <% if f.status == 0%>
-              <%= link_to image_tag('seat.png', width: 90), reserve_form_path(f.id) %>
+              <%= link_to image_tag('seat.png', width: 80), reserve_form_path(f.id) %>
           <% else %>
-              <%= image_tag('seat_soldout.png', width: 90) %>
+              <%= image_tag('seat_soldout.png', width: 80) %>
           <% end %>
         </div>
         <div class="seat-label">
@@ -36,7 +41,11 @@
       </div>
   <% end %>
   <p id="price">
-    S seat 400 yen<br>
-    A seat 300 yen
+    <span>前売り料金</span><br>
+    S<span>席</span>: 300<span>円</span><br>
+    A<span>席</span>: 200<span>円</span><br>
+    <span>当日料金</span><br>
+    S<span>席</span>: 400<span>円</span><br>
+    A<span>席</span>: 300<span>円</span><br>
   </p>
 </div>

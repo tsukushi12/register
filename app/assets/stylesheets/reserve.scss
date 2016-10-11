@@ -7,6 +7,10 @@ $orange-theme: #f8b500;
   font-family: "Letter Gothic Std Slanted";
   src: font-url('LetterGothicStd-Slanted.otf');
 }
+@font-face {
+  font-family: 'Letter Gothic Std';
+  src: font_url('LetterGothicStd')
+}
 
 // ClearFix
 .cf:before,
@@ -92,12 +96,12 @@ span.space {
   border-radius: 5px;
   #time-label {
     text-align: center;
-    width: 45%;
+    width: 35%;
     float:left;
   }
   #progress-label {
     text-align: center;
-    width: 55%;
+    width: 65%;
     float: right;
   }
 }
@@ -115,7 +119,7 @@ span.space {
     background-color: white;
     .left {
       text-align: center;
-      width: 45%;
+      width: 35%;
       float: left;
       a {
         line-height: 35px;
@@ -127,7 +131,7 @@ span.space {
     }
     .right {
       text-align: center;
-      width: 55%;
+      width: 65%;
       line-height: 35px;
       float: right;
     }
@@ -143,7 +147,7 @@ span.space {
   height: 60px;
   border: 2px $gray-border solid;
   border-radius: 8px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   float: right;
   #room {
     background-color: white;
@@ -181,6 +185,7 @@ span.space {
     width: 250px;
     height: 30px;
     margin: auto;
+    margin-top: 10px;
     margin-bottom: 10px;
     line-height: 35px;
     border: 2px $gray-border solid;
@@ -193,9 +198,9 @@ span.space {
     width: 100px;
     float: left;
     .seat-img {
-      padding: 5px;
+      padding: 0 10px;
       width: 90px;
-      height: 115px;
+      height: 105px;
     }
     .seat-label {
       text-align: center;
@@ -206,11 +211,16 @@ span.space {
     margin-left: 50px;
   }
   #price {
+    font-family: "Letter Gothic Std";
+    letter-spacing: 1px;
     clear: both;
     font-size: 28px;
     text-align: center;
     padding-top: 20px;
     margin-bottom: 10px;
+    span {
+      font-size: 16px;
+    }
   }
 }
 
@@ -253,12 +263,13 @@ div.time {
   padding-top: 10px;
   p {
     text-align: center;
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: normal;
     padding-top: 5px;
     padding-bottom: 5px;
     span {
       color: $orange-theme;
-      font-size: 24px;
+      font-size: 28px;
     }
   }
 }
@@ -277,6 +288,7 @@ ul.errors {
 }
 h2#email-description {
   margin-top: 20px;
+  margin-bottom: 3px;
 }
 
 
