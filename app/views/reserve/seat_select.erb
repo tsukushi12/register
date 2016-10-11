@@ -9,15 +9,15 @@
 <div id="seat-select-pc">
   <% @attrs.each_with_index do |f, i| %>
     <% if i == 0 || i == 5 %>
-        <div id="screen">
-          Screen<span class="space">&thinsp;</span>
-        </div>
       <div class="each-room cf">
-    <% end %>
-    <% if i == 0 %>
-      <p class="room-name">Room A</p>
-    <% elsif i == 5 %>
-      <p class="room-name">Room B</p>
+      <% if i == 0 %>
+        <p class="room-name">Room A</p>
+      <% elsif i == 5 %>
+        <p class="room-name">Room B</p>
+      <% end %>
+      <div id="screen">
+        Screen<span class="space"&thinsp;</span>
+      </div>
     <% end %>
     <div id="seat-<%= i + 1 %>-pc">
       <div class="seat-img">
@@ -46,12 +46,16 @@
       </div>
     <% end %>
   <% end %>
-  <p id="price">
-    <span>前売り料金</span><br>
-    S<span>席</span>: 300<span>円</span><br>
-    A<span>席</span>: 200<span>円</span><br>
-    <span>当日料金</span><br>
-    S<span>席</span>: 400<span>円</span><br>
-    A<span>席</span>: 300<span>円</span><br>
-  </p>
+  <div id="price-aria" class="cf">
+    <p class="price">
+      <span>前売り料金</span><br>
+      S<span>席</span>: 300<span>円</span><br>
+      A<span>席</span>: 200<span>円</span><br>
+    </p>
+    <p class="price">
+      <span>当日料金</span><br>
+      S<span>席</span>: 400<span>円</span><br>
+      A<span>席</span>: 300<span>円</span><br>
+    </p>
+  </div>
 </div>
