@@ -117,16 +117,20 @@ span.space {
     padding-top: 10px;
     box-sizing: border-box;
     background-color: white;
+    position: relative;
+    a {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
     .left {
       text-align: center;
       width: 35%;
       float: left;
-      a {
+      span{
         line-height: 35px;
-        &:link, &:visited, &hover, &active {
-          color: $gray-border;
-        }
-        text-decoration: none;
       }
     }
     .right {

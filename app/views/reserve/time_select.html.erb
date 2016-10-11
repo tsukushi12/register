@@ -28,8 +28,9 @@
       <% count += 1 if f.status == 0 %>
       <% if f.seat == 9 %>
           <div class="time-table" id="time-<%= (f.id+1)/10 %>">
+            <a href="<%= seat_select_path(f.id-9) %>"></a>
             <div class="left">
-              <%= link_to f.time.strftime("%H:%M"), seat_select_path(f.id-9) %>
+              <span><%= f.time.strftime("%H:%M") %></span>
             </div>
             <div class="right">
               <%= image_tag("#{count}.png") %>
