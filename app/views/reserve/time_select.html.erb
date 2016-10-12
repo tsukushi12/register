@@ -1,14 +1,10 @@
 <% if notice.present? || alert.present? %>
-    <div class="flash">
-      <div class="arrow-box">
-        <%= notice %><%= alert %>
-        <%= image_tag('character.png') %>
-      </div>
+  <div class="flash">
+    <div class="arrow-box">
+      <%= notice %><%= alert %>
+      <%= image_tag('character.png') %>
     </div>
-<% elsif alert.present? %>
-    <div class="arrow-box-red">
-      <%= alert %>
-    </div>
+  </div>
 <% end %>
 
 <div id="date-select" class="cf">
