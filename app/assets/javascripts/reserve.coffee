@@ -54,3 +54,9 @@ $ ->
 #################################
   $('div.flash').delay(8000).fadeOut(1000)
 #################################
+  $('div#help img').hide()
+  $('div#help img:first-child').fadeIn()
+  $('div#help img').click ->
+    $(@).fadeOut 'fast', ->
+      $(@).next('img').fadeIn()
+      $('div#help').append(@)
