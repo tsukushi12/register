@@ -19,7 +19,8 @@
 
 <div id="email">
   <%= form_for @user, url: reserve_register_path(@attr.id) do |f| %>
-      <%= f.email_field :addr, id: 'email_field', placeholder: 'test@example.com' %>
+      <%= f.email_field :addr, class: 'email_field', placeholder: 'メールアドレス' %>
+      <%= f.email_field :addr_confirmation, class: 'email_field', placeholder: '確認用にもう一度入力してください' %>
       <%= button_tag(type: 'submit', id: 'register',  data: { :disable_with => "送信中..." }) do %>
           送信<span class="space">&thinsp;</span>
       <% end %>

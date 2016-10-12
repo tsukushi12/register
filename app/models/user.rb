@@ -2,11 +2,12 @@ class User < ApplicationRecord
   belongs_to :attr
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-   validates :addr,
+  validates :addr,
      presence: true,
      length: { maximum: 255 },
      format: { with: VALID_EMAIL_REGEX }
 #     uniqueness: { case_sensitive: false }
+  validates_confirmation_of :addr, message: 'メールアドレスの確認が一致しません'
   validate :addr_unique
 
   def encryptor

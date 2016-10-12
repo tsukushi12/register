@@ -206,4 +206,5 @@ ja:
     attributes:
       user:
         addr: メールアドレス
+        addr_confirmation: ''
         attr_id: この

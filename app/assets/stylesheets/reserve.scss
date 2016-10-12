@@ -130,7 +130,7 @@ span.space {
       width: 35%;
       float: left;
       span{
-        line-height: 35px;
+        line-height: 37px;
       }
     }
     .right {
@@ -264,13 +264,12 @@ span.space {
 
 // メールフォーム
 #email {
-  #email_field {
+  .email_field {
     padding: 10px;
     font-size: 1.2em;
     font-family: 'Letter Gothic Std Slanted';
     color: #666;
     width: 100%;
-    margin-top: 8px;
     margin-bottom: 8px;
     border: solid 1px #ccc;
     -moz-box-sizing: border-box;
@@ -344,7 +343,7 @@ div.flash {
   margin-left:-150px;
   .arrow-box {
     position: relative;
-    font-size: 1.3em;
+    font-size: 1.1em;
     width: 145px;
     height: 120px;
     margin-left: 10px;
