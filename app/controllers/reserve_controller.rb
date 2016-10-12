@@ -23,15 +23,15 @@ class ReserveController < ApplicationController
   def register
     require 'digest'
     addr = user_params[:addr]
-    @user = @attr.user.build(addr: addr, url: Digest::SHA256.hexdigest(addr))
+    @user = @attr.user.build(addr: addr, addr_confirmation: user_params[:addr_confirmation], url: Digest::SHA256.hexdigest(addr))
 
-      if @user.save
-          @attr.update(status: 1)
-          RegistMailer.regist_bmail(@user, @attr).deliver
-          redirect_to(root_path, notice: "確認メールを送信したにゃん")
-      else
-        render :form
-      end
+    if @user.save
+        @attr.update(status: 1)
+        RegistMailer.regist_bmail(@user, @attr).deliver
+        redirect_to(root_path, notice: "確認メールを送信したにゃん")
+    else
+      render :form
+    end
   end
 
   def auth
@@ -84,7 +84,7 @@ class ReserveController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:addr)
+    params.require(:user).permit(:addr, :addr_confirmation)
   end
 
 end

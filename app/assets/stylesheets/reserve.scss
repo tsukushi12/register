@@ -264,13 +264,12 @@ span.space {
 
 // メールフォーム
 #email {
-  #email_field {
+  .email_field {
     padding: 10px;
     font-size: 1.2em;
     font-family: 'Letter Gothic Std Slanted';
     color: #666;
     width: 100%;
-    margin-top: 8px;
     margin-bottom: 8px;
     border: solid 1px #ccc;
     -moz-box-sizing: border-box;
