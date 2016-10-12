@@ -64,6 +64,9 @@ class ReserveController < ApplicationController
       redirect_to root_path, alert: "このURLはみつからないのにゃん"
     end
   end
+  
+  def help
+  end
 
   private
   def get_attr
