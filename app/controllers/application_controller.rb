@@ -13,6 +13,6 @@ class ApplicationController < ActionController::Base
     end
 
     def rescue404(*e)
-      redirect_to root_path, alert: "ごめんね。URLが見つからないよ"
+      redirect_to root_path, alert: "このURLはみつからないのにゃん"
     end
 end

@@ -45,13 +45,13 @@ class ReserveController < ApplicationController
         redirect_to root_path, alert: "ごめんね。座席が埋まってしまったみたい"
       end
     else
-      redirect_to root_path, alert: "ごめんね。URLが見つからないよ"
+      redirect_to root_path, alert: "このURLはみつからないのにゃん"
     end
   end
 
   def cancel_form
     unless @user || @attr.status == 2 || @user.attr_id == @attr.id
-      redirect_to root_path, alert: "ごめんね。URLが見つからないよ"
+      redirect_to root_path, alert: "このURLはみつからないのにゃん"
     end
   end
 
@@ -61,7 +61,7 @@ class ReserveController < ApplicationController
       @attr.update(status: 0)
       redirect_to root_path, notice: "予約をキャンセルしたよ。。。"
     else
-      redirect_to root_path, alert: "ごめんね。URLがみつからないよ"
+      redirect_to root_path, alert: "このURLはみつからないのにゃん"
     end
   end
 

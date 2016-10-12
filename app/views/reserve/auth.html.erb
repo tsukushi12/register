@@ -1,9 +1,0 @@
-<% @user.errors.full_messages.each do |msg| %>
- <%= msg %>
-<% end %>
-
-<% unless @err.empty? %>
-  <%= @err %>
-<% else %>
-  <p>登録が完了しました</p>
-<% end %>
