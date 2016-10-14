@@ -12,8 +12,9 @@ class ReserveController < ApplicationController
     @id = params[:id].to_i
     if @id % 10 != 1 || @id > 500 || @id < 0
       redirect_to root_path, alert: "このURLはみつからないのにゃん"
+    else
+      @attrs = Attr.limit(10).offset(@id.to_i - 1)
     end
-    @attrs = Attr.limit(10).offset(@id.to_i - 1)
   end
 
   def form
