@@ -7,10 +7,10 @@ class ApplicationController < ActionController::Base
 #  rescue_from ActiveRecord::RecordNotFound, with: :rescue404
     def rescue500(e)
 #      logger.error [e, *ebacktrace].join("\n")
-      redirect_to root_path, alert: "ごめんにゃ。サーバに問題が発生したにゃ"
+      redirect_to message_path , alert: "ごめんにゃ。サーバに問題が発生したにゃ"
     end
 
     def rescue404(*e)
-      redirect_to root_path, alert: "このURLはみつからないのにゃん"
+      redirect_to message_path , alert: "このURLはみつからないのにゃん"
     end
 end

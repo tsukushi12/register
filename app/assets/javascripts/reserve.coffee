@@ -52,8 +52,6 @@ $ ->
     $30.css(clicked)
     $29.css(click)
 #################################
-  $('div.flash').delay(8000).fadeOut(1000)
-#################################
   $('div#help img').hide()
   $('div#help img:first-child').fadeIn()
   $('div#help img').click ->
