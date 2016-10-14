@@ -1,8 +1,8 @@
 class ReserveController < ApplicationController
-  before_action :get_attr, :except => ['time_select', 'seat_select', 'help']
-  before_action :attr_check, :only => ['time_select', 'seat_select']
-  before_action :form_and_register_filter, :only => ['form', 'register']
-  before_action :auth_and_cancel_filter, :only => ['auth', 'cancel_form', 'cancel']
+  before_action :get_attr, :except => [:time_select, :seat_select, :help]
+  before_action :attr_check, :only => [:time_select, :seat_select]
+  before_action :form_and_register_filter, :only => [:form, :register]
+  before_action :auth_and_cancel_filter, :only => [:auth, :cancel_form, :cancel]
 
   def time_select
     @attrs = Attr.all
@@ -36,7 +36,6 @@ class ReserveController < ApplicationController
   end
 
   def auth
-
     if @attr.status == 1 && @user && @user.attr_id == @attr.id
       if @user.update(status: 1)
         @attr.update(status: 2)
@@ -58,8 +57,8 @@ class ReserveController < ApplicationController
 
   def cancel
     if @user && @attr.status == 2 && @user.attr_id == @attr.id
-      @user.update(status: 2)
-      @attr.update(status: 0)
+      @user.update_attribute(:status, 2)
+      @attr.update_attribute(:status, 0)
       redirect_to root_path, notice: "予約をキャンセルしたにゃん"
     else
       redirect_to root_path, alert: "このURLはみつからないのにゃん"
