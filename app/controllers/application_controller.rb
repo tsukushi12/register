@@ -3,8 +3,6 @@ class ApplicationController < ActionController::Base
   include Jpmobile::ViewSelector
 #  rescue_from Exception, with: :rescue500
 
-
-
 #  rescue_from ActionController::RoutingError, with: :rescue404
 #  rescue_from ActiveRecord::RecordNotFound, with: :rescue404
     def rescue500(e)
