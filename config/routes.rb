@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'admin/index'
+  get 'admin/login'
+  post 'admin/login', to: 'admin#authenticate', as: 'admin_auth'
+  delete 'admin/logout', to: 'admin#logout', as: 'admin_logout'
+
   root 'reserve#time_select'
   get 'reserve/time_select', to: 'reserve#time_select', as: 'time_select'
   get 'reserve/seat_select/:id', to: 'reserve#seat_select', as: 'seat_select'
