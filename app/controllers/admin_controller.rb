@@ -1,6 +1,6 @@
 class AdminController < ApplicationController
   def index
-    redirect_to message_path, alert: '殺すよ！' if session[:admin] != 1
+    redirect_to root_url if session[:admin] != 1
     @attrs = Attr.all
   end
   
@@ -12,9 +12,9 @@ class AdminController < ApplicationController
     password_digest = ENV['SECRET_A_PASS']
     if username == username_digest && password == password_digest
       session[:admin] = 1
-      redirect_to admin_index_path
+      redirect_to admin_index_url
     else
-      redirect_to message_path, alert: '殺すよ？'
+      redirect_to root_url
     end
   end
   
