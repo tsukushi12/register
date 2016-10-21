@@ -1,15 +1,8 @@
 class ReserveController < ApplicationController
-<<<<<<< HEAD
-  before_action :get_attr, :except => ['time_select', 'seat_select', 'help']
-  before_action :attr_check, :only => ['time_select', 'seat_select']
-  before_action :form_and_register_filter, :only => ['form', 'register']
-  before_action :auth_and_cancel_filter, :only => ['auth', 'cancel_form', 'cancel']
-=======
   before_action :get_attr, :except => [:time_select, :seat_select, :help, :message]
   before_action :attr_check, :only => [:time_select, :seat_select]
   before_action :form_and_register_filter, :only => [:form, :register]
   before_action :auth_and_cancel_filter, :only => [:auth, :cancel_form, :cancel]
->>>>>>> 075eb6b237eb5114a73b9c4ab6618ae6fd15c14f
 
   def time_select
     @attrs = Attr.all
@@ -64,16 +57,9 @@ class ReserveController < ApplicationController
 
   def cancel
     if @user && @attr.status == 2 && @user.attr_id == @attr.id
-<<<<<<< HEAD
-      binding.pry
-      @user.update(status: 2)
-      @attr.update(status: 0)
-      redirect_to root_path, notice: "予約をキャンセルしたにゃん"
-=======
       @user.update_attribute(:status, 2)
       @attr.update_attribute(:status, 0)
       redirect_to message_path, notice: "予約をキャンセルしたにゃん"
->>>>>>> 075eb6b237eb5114a73b9c4ab6618ae6fd15c14f
     else
       redirect_to message_path, alert: "このURLはみつからないのにゃん"
     end
