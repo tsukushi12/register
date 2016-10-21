@@ -86,7 +86,7 @@ class ReserveController < ApplicationController
   end
 
   def attr_check
-    @attr = Attr.where(status: 1).where("updated_at <= ?", 1.hours.minutes.ago)
+    @attr = Attr.where(status: 1).where("updated_at <= ?", 15.minutes.ago)
     @attr.update(status: 0) if @attr
   end
 

@@ -1,17 +1,23 @@
-<h1>予約が完了しました</h1>
+<h1 style="font-weight: lighter;">予約が完了しました</h1>
 
-<p>以下の内容で予約しています</p>
-<p>予約日時</p>
-<%= @attr.time.strftime("%m/%d %H:%M") %>
-<p>座席</p>
-<%= seat_is(@attr.seat).join(" ") %>
+<p>
+  以下の内容で予約しています
+</p>
 
-<p>認証コード</p>
-<%= @user.url[0..5] %>
+<div style="border: 1px #666666 solid; padding: 10px; text-align: center;">
+  <p style="margin: 3px; font-weight: bold;">予約日時</p>
+  <%= @attr.time.strftime("%m/%d %H:%M") %>
+  <p style="margin: 3px; font-weight: bold;">座席</p>
+  <%= seat_is(@attr.seat).join(" ") %>
+  <p style="margin: 3px; margin-top: 20px; font-weight: bold;">認証コード</p>
+  <%= @user.url[0..5] %>
+</div>
 
-<p>※このメールは削除せず、当日認証コード受付にお見せください。<br>
-  その際、料金のお払いをお願いします。</p>
 
+<p>
+  ※このメールは削除せず、当日認証コード受付にお見せください。<br>
+  その際、料金のお払いをお願いします。
+</p>
 
 <p>予約をキャンセルする場合は、以下のリンクを踏んでください</p>
 <%= "http://#{host_name}/reserve/cancel_form/#{@user.attr_id}?key=#{@user.url}" %>

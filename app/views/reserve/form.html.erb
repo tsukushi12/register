@@ -7,7 +7,10 @@
   </p>
 </div>
 
-<h2 id="email-description">公演当日に受信可能なメールアドレスを入力してください</h2>
+<div id="email-description">
+  <h2>公演当日に受信可能なメールアドレスを入力してください</h2>
+  <p>公演10分前までに受付にお越しにならない場合は<br>予約がキャンセルになります</p>
+</div>
 
 <% if @user.errors.any? %>
     <ul class="errors">
@@ -20,7 +23,7 @@
 <div id="email">
   <%= form_for @user, url: reserve_register_path(@attr.id) do |f| %>
       <%= f.email_field :addr, class: 'email_field', placeholder: 'メールアドレス' %>
-      <%= f.email_field :addr_confirmation, class: 'email_field', placeholder: '確認用にもう一度入力してください' %>
+      <%= f.email_field :addr_confirmation, class: 'email_field', placeholder: 'もう一度入力してください' %>
       <%= button_tag(type: 'submit', id: 'register',  data: { :disable_with => "送信中..." }) do %>
           送信<span class="space">&thinsp;</span>
       <% end %>

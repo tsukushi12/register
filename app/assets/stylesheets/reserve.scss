@@ -324,10 +324,20 @@ ul.errors {
   color: #730E15;
   line-height: 20px;
 }
-h2#email-description {
-  font-size: 12px;
-  margin-top: 20px;
-  margin-bottom: 3px;
+div#email-description {
+  font-family: Sans-Serif;
+  h2 {
+    font-size: 12px;
+    margin-top: 20px;
+    margin-bottom: 3px;
+  }
+  p {
+    font-size:12px;
+    font-weight: bold;
+    color: #730E15;
+    text-align: center;
+    margin: 10px 0;
+  }
 }
 
 

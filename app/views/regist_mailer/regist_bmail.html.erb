@@ -1,16 +1,25 @@
-<h1>確認メール</h1>
+<h1 style="font-weight: lighter;">確認メール</h1>
 
-<P>※予約は完了していません。</p>
-<p>下記のリンクを踏むことで予約が完了します。</p>
-<p>このメールに心当たりのない場合は、リンクを踏まず削除してください。</p>
+<p>
+  ※予約は完了していません。<br>
+  下記のリンクを踏むことで予約が完了します。<br>
+  このメールに心当たりのない場合は、リンクを踏まず削除してください。
+</p>
 <%= "http://#{host_name}/reserve/auth/#{@user.attr_id}?key=#{@user.url}"%>
 
-<p>なお、このリンクはメール送信から一時間で無効化されます</p>
+<p>なお、このリンクはメール送信から15分で無効化されます</p>
 
-<p>予約日時</p>
-<%= @attr.time.strftime("%m/%d %H:%M") %>
-<p>座席</p>
-<%= seat_is(@attr.seat).join(" ") %>
-<br>
-<p>神戸電子サウンドアトラクション<br>
-宣伝大使ヴェルにゃん</p>
+<div style="border: 1px #666666 solid; padding: 10px; text-align: center;">
+  <p style="margin: 3px; font-weight: bold;">予約日時</p>
+  <%= @attr.time.strftime("%m/%d %H:%M") %>
+  <p style="margin: 3px; font-weight: bold;">座席</p>
+  <%= seat_is(@attr.seat).join(" ") %>
+</div>
+<p>
+  当日は公演10分前までに受付にお越しください<br>
+  お越しにならない場合は予約はキャンセルされます
+</p>
+<p>
+  神戸電子サウンドアトラクション<br>
+  宣伝大使ヴェルにゃん
+</p>
