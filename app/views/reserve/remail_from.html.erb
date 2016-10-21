@@ -1,0 +1,8 @@
+
+
+  <%= form_tag action: :send_remail do%>
+      <%= f.email_field :addr, class: 'email_field', placeholder: 'メールアドレス' %>
+      <%= button_tag(type: 'submit', id: 'register',  data: { :disable_with => "送信中..." }) do %>
+      送信<span class="space">&thinsp;</span>
+      <% end %>
+  <% end %>

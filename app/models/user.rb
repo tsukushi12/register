@@ -10,6 +10,12 @@ class User < ApplicationRecord
   validates_confirmation_of :addr, message: 'メールアドレスの確認が一致しません'
   validate :addr_unique
 
+
+
+
+
+
+
   private
     def addr_unique
       if User.where(addr: addr, status: 1).exists?
