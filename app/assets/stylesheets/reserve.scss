@@ -333,14 +333,10 @@ h2#email-description {
 
 // 吹き出し
 div.flash {
-  position: fixed;
-  z-index: 100;
-  top: 50%;
-  left: 50%;
   width: 300px;
   height: 200px;
-  margin-top:-70px;
-  margin-left:-150px;
+  margin: auto;
+  margin-top: 40px;
   .arrow-box {
     position: relative;
     font-size: 1.1em;

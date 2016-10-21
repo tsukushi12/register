@@ -1,8 +1,15 @@
 class ReserveController < ApplicationController
+<<<<<<< HEAD
   before_action :get_attr, :except => ['time_select', 'seat_select', 'help']
   before_action :attr_check, :only => ['time_select', 'seat_select']
   before_action :form_and_register_filter, :only => ['form', 'register']
   before_action :auth_and_cancel_filter, :only => ['auth', 'cancel_form', 'cancel']
+=======
+  before_action :get_attr, :except => [:time_select, :seat_select, :help, :message]
+  before_action :attr_check, :only => [:time_select, :seat_select]
+  before_action :form_and_register_filter, :only => [:form, :register]
+  before_action :auth_and_cancel_filter, :only => [:auth, :cancel_form, :cancel]
+>>>>>>> 075eb6b237eb5114a73b9c4ab6618ae6fd15c14f
 
   def time_select
     @attrs = Attr.all
@@ -11,7 +18,7 @@ class ReserveController < ApplicationController
   def seat_select
     @id = params[:id].to_i
     if @id % 10 != 1 || @id > 500 || @id < 0
-      redirect_to root_path, alert: "このURLはみつからないのにゃん"
+      redirect_to message_path, alert: "このURLはみつからないのにゃん"
     else
       @attrs = Attr.limit(10).offset(@id.to_i - 1)
     end
@@ -29,7 +36,7 @@ class ReserveController < ApplicationController
     if @user.save
         @attr.update(status: 1)
         RegistMailer.regist_bmail(@user, @attr).deliver
-        redirect_to(root_path, notice: "確認メールを送信したにゃん")
+        redirect_to(message_path, notice: "確認メールを送信したにゃん")
     else
       render :form
     end
@@ -40,30 +47,40 @@ class ReserveController < ApplicationController
       if @user.update(status: 1)
         @attr.update(status: 2)
         RegistMailer.regist_amail(@user, @attr).deliver
-        redirect_to root_path, notice: "予約完了メールを送信したにゃん"
+        redirect_to message_path, notice: "予約完了メールを送信したにゃん"
       else
-        redirect_to root_path, alert: "この座席はうまってしまったにゃん"
+        redirect_to message_path, alert: "この座席はうまってしまったにゃん"
       end
     else
-      redirect_to root_path, alert: "このURLはみつからないのにゃん"
+      redirect_to message_path, alert: "このURLはみつからないのにゃん"
     end
   end
 
   def cancel_form
     unless @user || @attr.status == 2 || @user.attr_id == @attr.id
-      redirect_to root_path, alert: "このURLはみつからないのにゃん"
+      redirect_to message_path, alert: "このURLはみつからないのにゃん"
     end
   end
 
   def cancel
     if @user && @attr.status == 2 && @user.attr_id == @attr.id
+<<<<<<< HEAD
       binding.pry
       @user.update(status: 2)
       @attr.update(status: 0)
       redirect_to root_path, notice: "予約をキャンセルしたにゃん"
+=======
+      @user.update_attribute(:status, 2)
+      @attr.update_attribute(:status, 0)
+      redirect_to message_path, notice: "予約をキャンセルしたにゃん"
+>>>>>>> 075eb6b237eb5114a73b9c4ab6618ae6fd15c14f
     else
-      redirect_to root_path, alert: "このURLはみつからないのにゃん"
+      redirect_to message_path, alert: "このURLはみつからないのにゃん"
     end
+  end
+  
+  def message
+    redirect_to root_path unless flash[:notice].present? || flash[:alert].present?
   end
 
   def remail_from
@@ -79,7 +96,7 @@ class ReserveController < ApplicationController
   end
 
   def form_and_register_filter
-    redirect_to(root_path, {alert: "この座席はうまってしまったにゃん"}) unless @attr.status == 0
+    redirect_to(message_path, {alert: "この座席はうまってしまったにゃん"}) unless @attr.status == 0
   end
 
   def attr_check
@@ -94,5 +111,4 @@ class ReserveController < ApplicationController
   def user_params
     params.require(:user).permit(:addr, :addr_confirmation)
   end
-
 end
