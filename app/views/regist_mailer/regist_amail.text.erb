@@ -8,16 +8,19 @@
 座席
 <%= seat_is(@attr.seat).join(" ") %>
 
+料金
+<%= how_much(@attr.seat, @attr.authenticated_at) %>円
 
 認証コード
 <%= code_is(@user.url) %>
 
-※このメールは削除せず、当日認証コード受付にお見せください。
-その際、料金のお払いをお願いします。
+※このメールは削除せず、当日認証コードを受付にお見せください。
+その際、料金のお支払いをお願いします。
+当日は公演10分前までに受付にお越しください
+お越しにならない場合は予約はキャンセルされます
 
 予約のキャンセルはこちら
 <%= "http://#{host_name}/reserve/cancel_form/#{@user.attr_id}?key=#{@user.url}" %>
-<%= link_to 'こちら', "http://#{host_name}/reserve/cancel_form/#{@user.attr_id}?key=#{@user.url}" %>
 
 神戸電子サウンドアトラクション
 宣伝大使ヴェルにゃん

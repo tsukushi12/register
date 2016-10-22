@@ -1,0 +1,13 @@
+<div id="resend-form">
+  <h2>予約状況を確認</h2>
+
+  <p>予約状況をメールで送信します。ご予約の際に使用したメールアドレスを入力してください。</p>
+  <div id="email">
+    <%= form_tag(reserve_resend_path) do %>
+        <%= email_field_tag(:addr, '', class: 'email_field', placeholder: 'メールアドレス') %>
+        <%= button_tag(type: 'submit', id: 'register',  data: { :disable_with => "送信中..." }) do %>
+            送信<span class="space">&thinsp;</span>
+        <% end %>
+    <% end %>
+  </div>
+</div>

@@ -26,6 +26,17 @@ module ApplicationHelper
     url[0..5]
   end
   
+  def how_much(seat, time)
+    price = 200
+    if seat_is(seat)[1][-2] == 'S'
+      price += 100
+    end
+    if !time.nil? && time >= Time.zone.parse('2016/10/29')
+      price += 100
+    end
+    price
+  end
+  
   def host_name
     if ENV['G_HOST_NAME'].present?
       ENV['G_HOST_NAME']

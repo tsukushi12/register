@@ -9,14 +9,17 @@
   <%= @attr.time.strftime("%m/%d %H:%M") %>
   <p style="margin: 3px; font-weight: bold;">座席</p>
   <%= seat_is(@attr.seat).join(" ") %>
-  <p style="margin: 3px; margin-top: 20px; font-weight: bold;">認証コード</p>
+  <p style="margin: 3px; font-weight: bold;">料金</p>
+  <%= how_much(@attr.seat, @attr.authenticated_at) %>円
+  <p style="margin: 3px; font-weight: bold;">認証コード</p>
   <%= code_is(@user.url) %>
 </div>
 
-
 <p>
-  ※このメールは削除せず、当日認証コード受付にお見せください。<br>
-  その際、料金のお払いをお願いします。
+  ※このメールは削除せず、当日認証コードを受付にお見せください。<br>
+  その際、料金のお支払いをお願いします。<br>
+  当日は公演10分前までに受付にお越しください<br>
+  お越しにならない場合は予約はキャンセルされます
 </p>
 
 <p>予約のキャンセルは

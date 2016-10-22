@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get 'reserve/form/:id', to: 'reserve#form', as: 'reserve_form'
   post 'reserve/register/:id', to: 'reserve#register', as: 'reserve_register'
   get 'reserve/auth/:id', to: 'reserve#auth', as: 'reserve_auth'
+  get 'reserve/resend'
+  post 'reserve/resend', to: 'reserve#resend_mail', as: 'reserve_resend_mail'
   get 'reserve/cancel_form/:id', to: 'reserve#cancel_form', as: 'reserve_cancel_form'
   post 'reserve/cancel/:id', to: 'reserve#cancel', as: 'reserve_cancel'
   get 'reserve/help', to: 'reserve#help'
