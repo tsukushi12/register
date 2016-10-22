@@ -21,9 +21,9 @@ Rails.application.routes.draw do
   post 'admin/call', to: 'admin#call_mail_send'
   post 'admin/apollo', to: 'admin#apollo_mail_send'
 
-  if Rails.env.development?
-    mount LetterOpenerWeb::Engine, at: "/letter_opener"
-  end
+  # if Rails.env.development?
+    # mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  # end
 
   match '*path' => 'application#rescue404', via: :all
 end

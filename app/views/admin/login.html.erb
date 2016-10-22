@@ -1,13 +1,15 @@
-<%= form_tag(admin_auth_path) do %>
-  <div>
-    <%= label_tag :username %>
-    <%= text_field_tag :username %>
+<div id="login">
+  <%= form_tag(admin_auth_path) do %>
+    <div class="login-form">
+      <%= label_tag :username %>
+      <%= text_field_tag :username %>
     </div>
-  <div>
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
-  </div>
-  <div>
-    <%= submit_tag('送信') %>
-  </div>
-<% end %>
+    <div class="login-form">
+      <%= label_tag :password %>
+      <%= password_field_tag :password %>
+    </div>
+    <div class="login-button">
+      <%= submit_tag('送信') %>
+    </div>
+  <% end %>
+</div>

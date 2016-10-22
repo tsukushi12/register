@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-  before_action :authenticated, except: :login
+  before_action :authenticated, except: [:login, :authenticate]
   
   layout 'application_admin'
   

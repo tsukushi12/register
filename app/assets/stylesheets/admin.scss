@@ -1,9 +1,62 @@
 // Place all the styles related to the admin controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#login {
+  width: 600px;
+  margin: auto;
+  margin-top: 20px;
+  .login-form input {
+    padding: 10px;
+    font-size: 1.2em;
+    font-family: 'Letter Gothic Std Slanted';
+    color: #666;
+    width: 100%;
+    margin-bottom: 8px;
+    border: solid 1px #ccc;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .login-button input {
+    border: 1px #666666 solid;
+    background-color: white;
+    width: 100%;
+    height: 45px;
+    padding-top: 2px;
+    font-family: 'Letter Gothic Std Slanted';
+    font-size: 18px;
+    color: #666666;
+  }
+}
 #admin-console {
   font-family: Sans-Serif;
   color: black;
+  h1 {
+    text-align: center;
+    font-size: 35px;
+    margin-top: 10px;
+  }
+  .description {
+    width: 700px;
+    margin: 10px auto;
+    ul {
+      list-style-type: circle;
+    }
+  }
+  a#logout-button {
+    border: 1px #666666 solid;
+    display: block;
+    width: 200px;
+    height: 30px;
+    margin: 10px auto;
+    text-align: center;
+    text-decoration: none;
+    line-height: 28px;
+    color: #2E2F30;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
   table {
     text-align: center;
     width: 100%;

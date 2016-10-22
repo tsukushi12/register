@@ -1,6 +1,15 @@
 <div id="admin-console">
   <h1>管理画面</h1>
-  <%= link_to 'ログアウト', admin_logout_path, method: :delete %>
+  <%= link_to 'ログアウト', admin_logout_path, method: :delete, id: 'logout-button' %>
+  <div class="description">
+    <ul>
+      <li>メール1は公演開始前に送るメールです</li>
+      <li>メール2は公演終了後に送るメールです</li>
+      <li>メール1の送信ボタンを押すと表示されているアドレスにメール1が送られます</li>
+      <li>メール2の送信ボタンを押すと表示されていて出席した人のアドレスにメール2が送られます</li>
+      <li>出席ボタンを押して○にすると、その人は出席状態になりメール2が送信されるようになります</li>
+    </ul>
+  </div>
   <table>
     <thead>
     <tr>
