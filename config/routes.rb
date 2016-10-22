@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'admin/index'
+  get 'admin', to: 'admin#index'
   get 'admin/login'
   post 'admin/login', to: 'admin#authenticate', as: 'admin_auth'
   delete 'admin/logout', to: 'admin#logout', as: 'admin_logout'
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   post 'reserve/resend', to: 'reserve#resend_mail', as: 'reserve_resend_mail'
   get 'reserve/cancel_form/:id', to: 'reserve#cancel_form', as: 'reserve_cancel_form'
   post 'reserve/cancel/:id', to: 'reserve#cancel', as: 'reserve_cancel'
-  get 'reserve/help', to: 'reserve#help'
+  get 'help', to: 'reserve#help'
   get 'reserve/message', to: 'reserve#message', as: 'message'
 
   if Rails.env.development?
