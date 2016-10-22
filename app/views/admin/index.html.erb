@@ -23,9 +23,7 @@
             <%= seat_is(attr.seat).join(' ') %>
           </td>
           <td class="email">
-            <% unless attr.user.where(status: 1).empty? %>
-              <%= attr.user.where(status: 1).last.addr %>
-            <% end %>
+            <%= attr.authenticated_addr %>
           </td>
           <td class="code">
             <% unless attr.user.where(status: 1).empty? %>
