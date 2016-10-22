@@ -5,37 +5,68 @@
     <thead>
     <tr>
       <th>公演時間</th>
+      <th>部屋</th>
       <th>座席</th>
       <th>メールアドレス</th>
       <th>認証コード</th>
+      <th>出席</th>
+      <th>メール1</th>
+      <th>メール2</th>
       <th>メール送信</th>
     </tr>
     </thead>
     <tbody>
     <% @attrs.each_with_index do |attr, i| %>
-        <tr class="<%= 'stripe' if i.to_s[-2].nil? || i.to_s[-2].to_i.even? %>">
-          <% if i % 10 == 0 %>
-            <td rowspan="10">
-              <%= attr.time.strftime("%m/%d %H:%M") %>
-            </td>
+      <tr class="<%= 'stripe' if i.to_s[-2].nil? || i.to_s[-2].to_i.even? %>">
+        <% if i % 10 == 0 %>
+          <td rowspan="10">
+            <%= attr.time.strftime("%m/%d %H:%M") %>
+          </td>
+        <% end %>
+        <td>
+          <%= seat_is(attr.seat)[0][5] %>
+        </td>
+        <td>
+          <%= seat_is(attr.seat)[1][5..6] %>
+        </td>
+        <td class="email">
+          <%= attr.authenticated_addr %>
+        </td>
+        <td class="code">
+          <% unless attr.user.where(status: 1).empty? %>
+            <%= attr.user.where(status: 1).last.url[0..5] %>
           <% end %>
-          <td>
-            <%= seat_is(attr.seat).join(' ') %>
-          </td>
-          <td class="email">
-            <%= attr.authenticated_addr %>
-          </td>
-          <td class="code">
-            <% unless attr.user.where(status: 1).empty? %>
-              <%= attr.user.where(status: 1).last.url[0..5] %>
+        </td>
+        <td>
+          <%= form_tag admin_attend_path do %>
+            <%= hidden_field_tag :attr_id, attr.id %>
+            <%= button_tag do %>
+              <%= attr.attended ? '○' : '×' %>
             <% end %>
-          </td>
-          <% if i % 10 == 0 %>
-            <th rowspan=10>
-              送信する
-            </th>
           <% end %>
-        </tr>
+        </td>
+        <td>
+          <%= '済' if attr.mail1 %>
+        </td>
+        <td>
+          <%= '済' if attr.mail2 %>
+        </td>
+        <% if i % 10 == 0 %>
+          <th>
+            <%= form_tag admin_call_path do %>
+              <%= hidden_field_tag :attr_time, attr.time %>
+              <%= submit_tag 'Mail1送信' %>
+            <% end %>
+          </th>
+        <% elsif i % 10 == 1 %>
+          <th rowspan="9">
+            <%= form_tag admin_apollo_path do %>
+              <%= hidden_field_tag :attr_time, attr.time %>
+              <%= submit_tag 'Mail2送信' %>
+            <% end %>
+          </th>
+        <% end %>
+      </tr>
     <% end %>
     </tbody>
   </table>

@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
-  get 'admin', to: 'admin#index'
-  get 'admin/login'
-  post 'admin/login', to: 'admin#authenticate', as: 'admin_auth'
-  delete 'admin/logout', to: 'admin#logout', as: 'admin_logout'
-
   root 'reserve#time_select'
+  
   get 'reserve/time_select', to: 'reserve#time_select', as: 'time_select'
   get 'reserve/seat_select/:id', to: 'reserve#seat_select', as: 'seat_select'
   get 'reserve/form/:id', to: 'reserve#form', as: 'reserve_form'
@@ -16,6 +12,14 @@ Rails.application.routes.draw do
   post 'reserve/cancel/:id', to: 'reserve#cancel', as: 'reserve_cancel'
   get 'help', to: 'reserve#help'
   get 'reserve/message', to: 'reserve#message', as: 'message'
+
+  get 'admin', to: 'admin#index'
+  get 'admin/login'
+  post 'admin/login', to: 'admin#authenticate', as: 'admin_auth'
+  delete 'admin/logout', to: 'admin#logout', as: 'admin_logout'
+  post 'admin/attend'
+  post 'admin/call', to: 'admin#call_mail_send'
+  post 'admin/apollo', to: 'admin#apollo_mail_send'
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

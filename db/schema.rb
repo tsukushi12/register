@@ -10,16 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161022061420) do
+ActiveRecord::Schema.define(version: 20161022115321) do
 
   create_table "attrs", force: :cascade do |t|
     t.datetime "time"
     t.integer  "seat"
     t.integer  "status"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.datetime "authenticated_at"
     t.string   "authenticated_addr"
+    t.boolean  "attended",           default: false, null: false
+    t.boolean  "mail1",              default: false, null: false
+    t.boolean  "mail2",              default: false, null: false
   end
 
   create_table "users", force: :cascade do |t|

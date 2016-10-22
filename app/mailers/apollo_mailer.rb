@@ -1,0 +1,2 @@
+class ApolloMailer < ApplicationMailer
+end
