@@ -1,20 +1,23 @@
 予約が完了しました
-\
-\
+
 以下の内容で予約しています
-\
+
 予約日時
-\
-= @attr.time..strftime("%m/%d %H:%M")
-\
+<%= @attr.time.strftime("%m/%d %H:%M") %>
+
 座席
-\
-= seat_is(@attr.seat).join(" ")
-\
-\
+<%= seat_is(@attr.seat).join(" ") %>
+
+
 認証コード
-\
-= @user.url[0..5]
-\
+<%= code_is(@user.url) %>
+
+※このメールは削除せず、当日認証コード受付にお見せください。
+その際、料金のお払いをお願いします。
+
+予約のキャンセルはこちら
+<%= "http://#{host_name}/reserve/cancel_form/#{@user.attr_id}?key=#{@user.url}" %>
+<%= link_to 'こちら', "http://#{host_name}/reserve/cancel_form/#{@user.attr_id}?key=#{@user.url}" %>
+
 神戸電子サウンドアトラクション
 宣伝大使ヴェルにゃん

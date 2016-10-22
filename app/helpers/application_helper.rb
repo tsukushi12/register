@@ -22,6 +22,10 @@ module ApplicationHelper
     number/10*10+1
   end
   
+  def code_is(url)
+    url[0..5]
+  end
+  
   def host_name
     if ENV['G_HOST_NAME'].present?
       ENV['G_HOST_NAME']

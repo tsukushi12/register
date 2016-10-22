@@ -10,7 +10,7 @@
   <p style="margin: 3px; font-weight: bold;">座席</p>
   <%= seat_is(@attr.seat).join(" ") %>
   <p style="margin: 3px; margin-top: 20px; font-weight: bold;">認証コード</p>
-  <%= @user.url[0..5] %>
+  <%= code_is(@user.url) %>
 </div>
 
 
@@ -19,8 +19,8 @@
   その際、料金のお払いをお願いします。
 </p>
 
-<p>予約をキャンセルする場合は、以下のリンクを踏んでください</p>
-<%= "http://#{host_name}/reserve/cancel_form/#{@user.attr_id}?key=#{@user.url}" %>
+<p>予約のキャンセルは
+<%= link_to 'こちら', "http://#{host_name}/reserve/cancel_form/#{@user.attr_id}?key=#{@user.url}" %></p>
 
 <p>神戸電子サウンドアトラクション<br>
 宣伝大使ヴェルにゃん</p>

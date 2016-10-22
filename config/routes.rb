@@ -14,8 +14,10 @@ Rails.application.routes.draw do
   post 'reserve/cancel/:id', to: 'reserve#cancel', as: 'reserve_cancel'
   get 'reserve/help', to: 'reserve#help'
   get 'reserve/message', to: 'reserve#message', as: 'message'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 
   match '*path' => 'application#rescue404', via: :all
 end
