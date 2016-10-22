@@ -35,10 +35,15 @@
     text-align: center;
     font-size: 35px;
     margin-top: 10px;
+    color: #333333;
   }
   .description {
+    color: #730E15;
+    border: 2px #730E15 solid;
+    border-radius: 10px;
     width: 700px;
     margin: 10px auto;
+    padding: 20px 50px;
     ul {
       list-style-type: circle;
     }
