@@ -68,7 +68,7 @@ class ReserveController < ApplicationController
   def cancel
     if @user && @attr.status == 2 && @user.attr_id == @attr.id
       @user.update_attribute(:status, 2)
-      @attr.update(status: 0, authenticated_addr: nil, authenticated_at: nil)
+      @attr.update(status: 0, authenticated_addr: nil, authenticated_at: nil, attended: false, mail1: false, mail2: false)
       redirect_to message_path, notice: "予約をキャンセルしたにゃん"
     else
       redirect_to message_path, alert: "このURLはみつからないのにゃん"
