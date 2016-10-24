@@ -1,13 +1,13 @@
 class RegistMailer < ApplicationMailer
   before_action :set_smtp_settings
-  
+
   default from: "wernyan.kobedenshi@gmail.com"
   add_template_helper(ApplicationHelper)
 
   def regist_bmail(user, attr)
     @user = user
     @attr = attr
-    mail to: @user.addr, subject: "ありがとうございますにゃん"
+    mail to: @user.addr, subject: "予約はまだ確定していないにゃん"
   end
 
   def regist_amail(user, attr)
@@ -15,7 +15,7 @@ class RegistMailer < ApplicationMailer
     @attr = attr
     mail to: @user.addr, subject: "ご予約ありがとうございますにゃん"
   end
-  
+
   def regist_call_mail(attr)
     @attr = attr
     @body = ''
