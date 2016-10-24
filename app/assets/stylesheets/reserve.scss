@@ -354,7 +354,7 @@ div.flash {
     height: 120px;
     margin-left: 10px;
     padding: 10px;
-    background: #f8e2a6;
+    background: #f8d540;
     border: 2px solid #57411f;
   }
   .arrow-box:after, .arrow-box:before {
@@ -412,4 +412,8 @@ div#cancel-form, div#resend-form {
       color: $gray-border;
     }
   }
+}
+
+div#help {
+  text-align: center;
 }
