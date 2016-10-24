@@ -1,5 +1,9 @@
 <div id="help">
   <% 7.times do |i| %>
-    <%= image_tag "help#{i+1}.jpg", width: 320 %>
+    <% if i == 6 %>
+      <%= link_to image_tag("help#{i+1}", width: 320), root_path %>
+    <% else %>
+      <%= image_tag "help#{i+1}.jpg", width: 320 %>
+    <% end %>
   <% end %>
 </div>
