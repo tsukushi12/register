@@ -26,6 +26,10 @@ module ApplicationHelper
     url[0..5]
   end
   
+  def time_is(time)
+    time >= Time.zone.parse('2016/10/29')
+  end
+  
   def how_much(seat, time)
     price = 200
     if seat_is(seat)[1][-2] == 'S'
