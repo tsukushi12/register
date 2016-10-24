@@ -1,0 +1,48 @@
+<div id="admin-console">
+  <h1>一覧画面</h1>
+  <br>
+  <table>
+    <thead>
+    <tr>
+      <th>公演時間</th>
+      <th>部屋</th>
+      <th>座席</th>
+      <th>認証コード</th>
+      <th>予約日時</th>
+      <th>値段</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @attrs.each_with_index do |attr, i| %>
+        <tr class="<%= 'stripe' if i.to_s[-2].nil? || i.to_s[-2].to_i.even? %>">
+          <% if i % 10 == 0 %>
+              <td rowspan="10">
+                <%= attr.time.strftime("%m/%d %H:%M") %>
+              </td>
+          <% end %>
+          <td>
+            <%= seat_is(attr.seat)[0][5] %>
+          </td>
+          <td>
+            <%= seat_is(attr.seat)[1][5..6] %>
+          </td>
+          <td class="code">
+            <% unless attr.user.where(status: 1).empty? %>
+                <%= attr.user.where(status: 1).last.url[0..5] %>
+            <% end %>
+          </td>
+          <td>
+            <% unless attr.authenticated_at.nil? %>
+                <%= time_is(attr.authenticated_at) ? '当日' : '前売り' %>
+            <% end %>
+          </td>
+          <td>
+            <% unless attr.authenticated_at.nil? %>
+                <%= how_much(attr.seat, attr.authenticated_at) %>円
+            <% end %>
+          </td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'reserve/message', to: 'reserve#message', as: 'message'
 
   get 'admin', to: 'admin#index'
+  get 'admin/info', to: 'admin#info'
   get 'admin/login'
   post 'admin/login', to: 'admin#authenticate', as: 'admin_auth'
   delete 'admin/logout', to: 'admin#logout', as: 'admin_logout'

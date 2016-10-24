@@ -1,10 +1,14 @@
 class AdminController < ApplicationController
-  before_action :authenticated, except: [:login, :authenticate]
+  before_action :authenticated, except: [:info, :login, :authenticate]
   
   layout 'application_admin'
   
   # 管理画面
   def index
+    @attrs = Attr.all
+  end
+  
+  def info
     @attrs = Attr.all
   end
   
