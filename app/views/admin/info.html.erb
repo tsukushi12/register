@@ -13,42 +13,42 @@
     </tr>
     </thead>
     <tbody>
-    <% @attrs.each_with_index do |attr, i| %>
-      <% if i.between?(90, 99) || i.between?(190, 199) || i.between?(340, 349) || i.between?(440, 449) %>
-        <tr>
-          <td colspan="11">休憩中</td>
-        </tr>
-      <% else %>
-        <tr class="<%= 'stripe' if i.to_s[-2].nil? || i.to_s[-2].to_i.even? %>">
-          <% if i % 10 == 0 %>
-              <td rowspan="10">
-                <%= attr.time.strftime("%m/%d %H:%M") %>
-              </td>
-          <% end %>
-          <td>
-            <%= seat_is(attr.seat)[0][5] %>
-          </td>
-          <td>
-            <%= seat_is(attr.seat)[1][5..6] %>
-          </td>
-          <td class="code">
-            <% unless attr.user.where(status: 1).empty? %>
-                <%= attr.user.where(status: 1).last.url[0..5] %>
+      <% @attrs.each_with_index do |attr, i| %>
+        <% if i.between?(90, 99) || i.between?(190, 199) || i.between?(340, 349) || i.between?(440, 449) %>
+          <tr>
+            <td colspan="11">休憩中</td>
+          </tr>
+        <% else %>
+          <tr class="<%= 'stripe' if i.to_s[-2].nil? || i.to_s[-2].to_i.even? %>">
+            <% if i % 10 == 0 %>
+                <td rowspan="10">
+                  <%= attr.time.strftime("%m/%d %H:%M") %>
+                </td>
             <% end %>
-          </td>
-          <td>
-            <% unless attr.authenticated_at.nil? %>
-                <%= time_is(attr.authenticated_at) ? '当日' : '前売り' %>
-            <% end %>
-          </td>
-          <td>
-            <% unless attr.authenticated_at.nil? %>
-                <%= how_much(attr.seat, attr.authenticated_at) %>円
-            <% end %>
-          </td>
-        </tr>
+            <td>
+              <%= seat_is(attr.seat)[0][5] %>
+            </td>
+            <td>
+              <%= seat_is(attr.seat)[1][5..6] %>
+            </td>
+            <td class="code">
+              <% unless attr.user.where(status: 1).empty? %>
+                  <%= attr.user.where(status: 1).last.url[0..5] %>
+              <% end %>
+            </td>
+            <td>
+              <% unless attr.authenticated_at.nil? %>
+                  <%= time_is(attr.authenticated_at) ? '当日' : '前売り' %>
+              <% end %>
+            </td>
+            <td>
+              <% unless attr.authenticated_at.nil? %>
+                  <%= how_much(attr.seat, attr.authenticated_at) %>円
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
       <% end %>
-    <% end %>
     </tbody>
   </table>
 </div>
