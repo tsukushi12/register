@@ -14,6 +14,11 @@
     </thead>
     <tbody>
     <% @attrs.each_with_index do |attr, i| %>
+      <% if i.between?(90, 99) || i.between?(190, 199) || i.between?(340, 349) || i.between?(440, 449) %>
+        <tr>
+          <td colspan="11">休憩中</td>
+        </tr>
+      <% else %>
         <tr class="<%= 'stripe' if i.to_s[-2].nil? || i.to_s[-2].to_i.even? %>">
           <% if i % 10 == 0 %>
               <td rowspan="10">
@@ -42,6 +47,7 @@
             <% end %>
           </td>
         </tr>
+      <% end %>
     <% end %>
     </tbody>
   </table>
