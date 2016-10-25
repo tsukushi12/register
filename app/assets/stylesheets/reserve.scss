@@ -55,7 +55,19 @@ span.space {
   margin: auto;
   margin-top: 10px;
 }
-
+// リンク
+  div#links {
+    text-align: right;
+    margin: 5px;
+    a {
+      text-decoration: none;
+      color: $gray-border;
+      &:first-child {
+        border-right: 1px $gray-border solid;
+        padding-right: 17px;
+      }
+    }
+  }
 // 時間選択画面
 #date-select {
   width: 100%;
