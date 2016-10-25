@@ -1,18 +1,12 @@
-<h1 style="font-weight: lighter;">公演がもうすぐ始まります</h1>
-
-<%= @body %>
-
-  <p style="margin: 3px; font-weight: bold;">公演時間</p>
-  <%= @attr.time.strftime("%m/%d %H:%M") %>
-  <p style="margin: 3px; font-weight: bold;">座席</p>
-  <%= seat_is(@attr.seat).join(" ") %>
-  <p style="margin: 3px; font-weight: bold;">料金</p>
-  <%= how_much(@attr.seat, @attr.authenticated_at) %>円
-</div>
-
 <p>
-  ※お越しになったら、予約完了メールの認証コードを受付にお見せください。<br>
-  その際、料金のお支払いをお願いします。
+  サウンドアトラクションの公演まであと30分だにゃん！<br>
+  受付をお済ませくださいにゃん！<br>
+  公演10分前になると予約がキャンセルとなりますのでお気をつけくださいにゃん。<br>
+  受付にて認証コードをお見せくださいにゃん。<br>
+  無くしてしまった場合はこちらから再送できますにゃん！<br>
+</p>
+<p>
+  <%= link_to '予約完了メールを再送する', "http://#{host_name}/reserve/resend" %>
 </p>
 
 <p>神戸電子サウンドアトラクション<br>

@@ -1,12 +1,12 @@
 class ApolloMailer < ApplicationMailer
-  default from: "wernyan.kobedenshi@gmail.com"
+  default from: "アポロ"
   add_template_helper(ApplicationHelper)
 
   def apollo_mail(attr)
     set_smtp_settings
     
     @attr = attr
-    mail to: @attr.authenticated_addr, subject: "アポロからのメール"
+    mail to: @attr.authenticated_addr, subject: "ありがとう"
   end
   
   private
