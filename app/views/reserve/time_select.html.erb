@@ -15,7 +15,14 @@
 
 <div id="time-tables">
   <% count = 0 %>
-  <% @attrs.each do |f|%>
+  <% @attrs.each_with_index do |f, i|%>
+    <% if i.between?(90, 99) || i.between?(190, 199) || i.between?(340, 349) || i.between?(440, 449) %>
+      <% if i == 90 || i == 190 || i == 340 || i == 440 %>
+        <div class="time-table" id="time-<%= i/10+1 %>">
+          休憩中
+        </div>
+      <% end %>
+    <% else %>
       <% count += 1 if f.status == 0 %>
       <% if f.seat == 9 %>
           <div class="time-table" id="time-<%= (f.id+1)/10 %>">
@@ -29,5 +36,6 @@
             <% count = 0 %>
           </div>
       <% end %>
+    <% end %>
   <% end %>
 </div>
