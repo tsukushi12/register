@@ -1,17 +1,17 @@
 class AdminController < ApplicationController
-  before_action :authenticated, except: [:info, :login, :authenticate]
-  
+#  before_action :authenticated, except: [:info, :login, :authenticate]
+
   layout 'application_admin'
-  
+
   # 管理画面
   def index
     @attrs = Attr.all
   end
-  
+
   def info
     @attrs = Attr.all
   end
-  
+
   # ログイン処理
   def authenticate
     require 'digest'
@@ -26,15 +26,15 @@ class AdminController < ApplicationController
       redirect_to root_url
     end
   end
-  
+
   def login
   end
-  
+
   def logout
     reset_session
     redirect_to admin_login_path
   end
-  
+
   def attend
     attr = Attr.find(params[:attr_id])
     attr.attended ? attr.update(attended: false) : attr.update(attended: true)
@@ -51,10 +51,10 @@ class AdminController < ApplicationController
     end
     redirect_to admin_url, notice: '送信完了'
   end
-  
+
   def apollo_mail_send
     attrs = Attr.where(time: params[:attr_time].to_time).where("authenticated_addr not ? and attended = ?", nil, true)
-    
+
     attrs.each do |attr|
       ApolloMailer.apollo_mail(attr).deliver_later
       attr.update(mail2: true)
