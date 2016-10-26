@@ -1,0 +1,7 @@
+if (<%= @attr.attended %>){
+  $('#button-<%= @attr.id %>').html('○');
+  $('#button-<%= @attr.id %>').css('background-color', '#90EE90');
+} else {
+  $('#button-<%= @attr.id %>').html('×');
+  $('#button-<%= @attr.id %>').css('background-color', 'white');
+}

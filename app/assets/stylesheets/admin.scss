@@ -82,3 +82,9 @@
   }
 }
 
+button[id^="button"] {
+  background-color: white;
+}
+button.attended {
+  background-color: #90EE90;
+}

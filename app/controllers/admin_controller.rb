@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-#  before_action :authenticated, except: [:info, :login, :authenticate]
+  before_action :authenticated, except: [:info, :login, :authenticate, :attend]
 
   layout 'application_admin'
 
@@ -36,9 +36,13 @@ class AdminController < ApplicationController
   end
 
   def attend
-    attr = Attr.find(params[:attr_id])
-    attr.attended ? attr.update(attended: false) : attr.update(attended: true)
-    redirect_to admin_url
+    @attr = Attr.find(params[:attr_id])
+    @attr.attended ? @attr.update(attended: false) : @attr.update(attended: true)
+    
+    respond_to do |format|
+      format.html { redirect_to request.referer }
+      format.js
+    end
   end
 
   # メール送る処理作る

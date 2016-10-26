@@ -10,6 +10,7 @@
       <th>認証コード</th>
       <th>予約日時</th>
       <th>値段</th>
+      <th>出席</th>
     </tr>
     </thead>
     <tbody>
@@ -44,6 +45,20 @@
             <td>
               <% unless attr.authenticated_at.nil? %>
                   <%= how_much(attr.seat, attr.authenticated_at) %>円
+              <% end %>
+            </td>
+            <td>
+              <%= form_tag(admin_attend_path, remote: true) do %>
+                  <%= hidden_field_tag :attr_id, attr.id %>
+                  <% if attr.attended %>
+                    <%= button_tag(id: "button-#{i+1}", class: 'attended') do %>
+                      ○
+                    <% end %>
+                  <% else %>
+                    <%= button_tag(id: "button-#{i+1}") do %>
+                      ×
+                    <% end %>
+                 <% end %>
               <% end %>
             </td>
           </tr>
