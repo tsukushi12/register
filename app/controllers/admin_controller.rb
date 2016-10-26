@@ -50,7 +50,7 @@ class AdminController < ApplicationController
     attrs = Attr.where(time: params[:attr_time].to_time).where("authenticated_addr not ?", nil )
 
     attrs.each do |attr|
-      RegistMailer.regist_call_mail(attr).deliver
+      RegistMailer.regist_call_mail(attr.authenticated_addr).deliver_later
       attr.update(mail1: true)
     end
     redirect_to admin_url, notice: '送信完了'
