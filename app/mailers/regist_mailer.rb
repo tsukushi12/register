@@ -16,10 +16,8 @@ class RegistMailer < ApplicationMailer
     mail to: @user.addr, subject: "ご予約ありがとうございますにゃん"
   end
 
-  def regist_call_mail(attr)
-    @attr = attr
-    @body = ''
-    mail to: attr.authenticated_addr, subject: "公演30分前ですにゃん"
+  def regist_call_mail(address)
+    mail to: address, subject: "公演30分前ですにゃん"
   end
 
   private
