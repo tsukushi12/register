@@ -27,7 +27,7 @@ class ReserveController < ApplicationController
     @user = @attr.user.build(addr: addr, addr_confirmation: user_params[:addr_confirmation], url: Digest::SHA256.hexdigest(addr))
 
     if @user.save
-        @attr.update(status: 1)
+        @attr.update(status: 1) unless @attr.time.today?
         RegistMailer.regist_bmail(@user, @attr).deliver
         redirect_to(message_path, notice: "確認メールを送信したにゃん")
     else
@@ -48,10 +48,10 @@ class ReserveController < ApplicationController
       redirect_to message_path, alert: "このURLはみつからないのにゃん"
     end
   end
-  
+
   def resend
   end
-  
+
   def resend_mail
     if (attr = Attr.find_by(authenticated_addr: params[:addr]))
       RegistMailer.regist_amail(attr.user.where(status: 1).last, attr).deliver
@@ -74,7 +74,7 @@ class ReserveController < ApplicationController
       redirect_to message_path, alert: "このURLはみつからないのにゃん"
     end
   end
-  
+
   def message
     redirect_to root_path unless flash[:notice].present? || flash[:alert].present?
   end

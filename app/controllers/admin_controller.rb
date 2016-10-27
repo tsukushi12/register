@@ -38,7 +38,7 @@ class AdminController < ApplicationController
   def attend
     @attr = Attr.find(params[:attr_id])
     @attr.attended ? @attr.update(attended: false) : @attr.update(attended: true)
-    
+
     respond_to do |format|
       format.html { redirect_to request.referer }
       format.js
@@ -58,10 +58,13 @@ class AdminController < ApplicationController
 
   def apollo_mail_send
     attrs = Attr.where(time: params[:attr_time].to_time).where("authenticated_addr not ? and attended = ?", nil, true)
+    Attr.where(time: params[:attr_time].to_time).update(status: 3)
 
     attrs.each do |attr|
       ApolloMailer.apollo_mail(attr).deliver_later
       attr.update(mail2: true)
+      attr.user.update(status: 0)
+      binding.pry
     end
     redirect_to admin_url, notice: '送信完了'
   end

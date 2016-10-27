@@ -52,12 +52,9 @@ $ ->
     $30.css(clicked)
     $29.css(click)
 #################################
-  $('div#help img, div#help a').hide()
+  $('div#help img').hide()
   $('div#help img:first-child').fadeIn()
   $('div#help img').click ->
-    if $(@).next().is('img')
-      $(@).fadeOut 'fast', ->
-        $(@).next('img').fadeIn()
-    else if $(@).next().is('a')
-      $(@).fadeOut 'fast', ->
-        $(@).next('a').fadeIn()
+    $(@).fadeOut 'fast', ->
+      $(@).next('img').fadeIn()
+      $('div#help').append(@)
