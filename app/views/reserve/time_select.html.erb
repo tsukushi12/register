@@ -26,7 +26,11 @@
       <% count += 1 if f.status == 0 %>
       <% if f.seat == 9 %>
           <div class="time-table" id="time-<%= (f.id+1)/10 %>">
-            <a href="<%= seat_select_path(f.id-9) %>"></a>
+            <% if f.time > Time.zone.now %>
+              <a href="<%= seat_select_path(f.id-9) %>"></a>
+            <% else %>
+              <div class="ended">予約終了</div>
+            <% end %>
             <div class="left">
               <span><%= f.time.strftime("%H:%M") %></span>
             </div>

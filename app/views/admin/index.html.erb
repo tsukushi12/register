@@ -83,20 +83,19 @@
           <td>
             <%= '済' if attr.mail2 %>
           </td>
-          <% if i % 10 == 0 %>
-            <th>
-              <%= form_tag admin_call_path do %>
-                <%= hidden_field_tag :attr_time, attr.time %>
-                <%= submit_tag 'Mail1送信' %>
-              <% end %>
-            </th>
-          <% elsif i % 10 == 1 %>
-            <th rowspan="9">
-              <%= form_tag admin_apollo_path do %>
-                <%= hidden_field_tag :attr_time, attr.time %>
-                <%= submit_tag 'Mail2送信' %>
-              <% end %>
-            </th>
+          <% if i%10 == 0 %>
+            <% if attr.status != 3 %>
+              <td rowspan="10" class="mail-button">
+                <%= form_tag admin_apollo_path do %>
+                  <%= hidden_field_tag :attr_time, attr.time %>
+                  <%= submit_tag 'アポロからのメールを送信' %>
+                <% end %>
+              </td>
+            <% else %>
+              <td>
+                送信済みです
+              </td>
+            <% end %>
           <% end %>
         </tr>
       <% end %>

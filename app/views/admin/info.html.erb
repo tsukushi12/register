@@ -11,6 +11,7 @@
       <th>予約日時</th>
       <th>値段</th>
       <th>出席</th>
+      <th>メール送信</th>
     </tr>
     </thead>
     <tbody>
@@ -61,6 +62,20 @@
                  <% end %>
               <% end %>
             </td>
+            <% if i%10 == 0 %>
+              <% if attr.status != 3 %>
+                <td rowspan="10" class="mail-button" id="mail-button-<%= attr.id %>">
+                  <%= form_tag admin_apollo_path do %>
+                    <%= hidden_field_tag :attr_time, attr.time %>
+                    <%= submit_tag 'アポロからのメールを送信' %>
+                  <% end %>
+                </td>
+              <% else %>
+                <td>
+                  送信済みです
+                </td>
+              <% end %>
+            <% end %>
           </tr>
         <% end %>
       <% end %>

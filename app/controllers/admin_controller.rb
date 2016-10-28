@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-  before_action :authenticated, except: [:info, :login, :authenticate, :attend]
+  before_action :authenticated, except: [:info, :login, :authenticate, :attend, :apollo_mail_send]
 
   layout 'application_admin'
 
@@ -53,7 +53,7 @@ class AdminController < ApplicationController
       RegistMailer.regist_call_mail(attr.authenticated_addr).deliver_later
       attr.update(mail1: true)
     end
-    redirect_to admin_url, notice: '送信完了'
+    redirect_to :back, notice: '送信完了'
   end
 
   def apollo_mail_send
@@ -64,7 +64,6 @@ class AdminController < ApplicationController
       ApolloMailer.apollo_mail(attr).deliver_later
       attr.update(mail2: true)
       attr.user.update(status: 0)
-      binding.pry
     end
     redirect_to admin_url, notice: '送信完了'
   end
