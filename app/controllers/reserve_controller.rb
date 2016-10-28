@@ -36,7 +36,8 @@ class ReserveController < ApplicationController
   end
 
   def auth
-    if @attr.status == 1 && @user && @user.attr_id == @attr.id
+    flag = @attr.status == 1 or @attr.time.today?
+    if flag && @user && @user.attr_id == @attr.id
       if @user.update(status: 1)
         @attr.update(status: 2, authenticated_addr: @user.addr, authenticated_at: Time.zone.now)
         RegistMailer.regist_amail(@user, @attr).deliver
