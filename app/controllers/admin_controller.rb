@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-  before_action :authenticated, except: [:info, :login, :authenticate, :attend, :apollo_mail_send]
+  before_action :authenticated, except: [:info, :login, :authenticate, :attend]
 
   layout 'application_admin'
 
