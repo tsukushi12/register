@@ -26,9 +26,9 @@ $ ->
     date30.push "#time-#{i+25}"
   $date29 = $(date29.join(", "))
   $date30 = $(date30.join(", "))
-  $date30.hide()
-  $29 = $('#date-29').css(clicked)
-  $30 = $('#date-30').css(click)
+  $date29.hide()
+  $29 = $('#date-29').css(click)
+  $30 = $('#date-30').css(clicked)
 #################################
   $a.click ->
     $room_b.hide()
