@@ -36,6 +36,8 @@ class ReserveController < ApplicationController
   end
 
   def auth
+    redirect_to(message_path, alert: "予約の受け付けが終了しました") if @attr.time - Time.now < 5.minutes
+
     flag = @attr.status == 1 || @attr.time.today?
     if flag && @user && @user.attr_id == @attr.id
       if @user.update(status: 1)
