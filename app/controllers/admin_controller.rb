@@ -44,6 +44,14 @@ class AdminController < ApplicationController
       format.js
     end
   end
+  
+  def cancel
+    attr = Attr.find(params[:attr_id])
+    user = User.find_by(addr: attr.authenticated_addr)
+    user.update_attribute(:status, 2)
+    attr.update(status: 0, authenticated_addr: nil, authenticated_at: nil, attended: false, mail1: false, mail2: false)
+    redirect_to :back
+  end
 
   # メール送る処理作る
   def call_mail_send

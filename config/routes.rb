@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   post 'admin/attend'
   post 'admin/call', to: 'admin#call_mail_send'
   post 'admin/apollo', to: 'admin#apollo_mail_send'
+  post 'admin/cancel'
 
   # if Rails.env.development?
     # mount LetterOpenerWeb::Engine, at: "/letter_opener"

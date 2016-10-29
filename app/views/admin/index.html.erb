@@ -24,6 +24,7 @@
       <th>30分前メール</th>
       <th>アポロメール</th>
       <th>アポロのメール</th>
+      <th>削除</th>
     </tr>
     </thead>
     <tbody>
@@ -92,6 +93,14 @@
               <% end %>
             </td>
           <% end %>
+          <td>
+            <% if attr.authenticated_addr.present? %>
+              <%= form_tag admin_cancel_path do %>
+                <%= hidden_field_tag :attr_id, attr.id %>
+                <%= submit_tag '削除', data: { confirm: "予約を削除します。よろしいですか？" } %>
+              <% end %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     <% end %>
