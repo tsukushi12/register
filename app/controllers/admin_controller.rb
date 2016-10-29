@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-  before_action :authenticated, except: [:info, :login, :authenticate, :attend]
+  #before_action :authenticated, except: [:info, :login, :authenticate, :attend]
 
   layout 'application_admin'
 
@@ -44,7 +44,7 @@ class AdminController < ApplicationController
       format.js
     end
   end
-  
+
   def cancel
     attr = Attr.find(params[:attr_id])
     user = User.find_by(addr: attr.authenticated_addr)

@@ -39,7 +39,7 @@
             </td>
             <td>
               <% unless attr.authenticated_at.nil? %>
-                  <%= time_is(attr.authenticated_at) ? '当日' : '前売り' %>
+                  <%= time_is(attr.authenticated_at, attr.time) ? '当日' : '前売り' %>
               <% end %>
             </td>
             <td>

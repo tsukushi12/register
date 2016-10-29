@@ -26,8 +26,8 @@ module ApplicationHelper
     url[0..5]
   end
 
-  def time_is(time)
-    time >= Time.zone.parse('2016/10/29')
+  def time_is(regist_time, attr_time)
+    regist_time > attr_time.beginning_of_day
   end
 
   def how_much(seat, regist_time, attr_time)
