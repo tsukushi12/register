@@ -28,7 +28,7 @@ class ReserveController < ApplicationController
 
     if @user.save
         @attr.update(status: 1) unless @attr.time.today?
-        RegistMailer.regist_bmail(@user, @attr).deliver_later
+        RegistMailer.regist_bmail(@user, @attr).deliver
         redirect_to(message_path, notice: "確認メールを送信したにゃん")
     else
       render :form
@@ -36,22 +36,24 @@ class ReserveController < ApplicationController
   end
 
   def auth
-    redirect_to(message_path, alert: "予約の受け付けが終了しました") if @attr.time - Time.now < 5.minutes
-
-    flag = @attr.status == 1 || @attr.time.today?
-    if flag && @user && @user.attr_id == @attr.id
-      if @user.update(status: 1)
-        @attr.update(status: 2, authenticated_addr: @user.addr, authenticated_at: Time.zone.now)
-        if Time.zone.now + 30.minutes > @attr.time
-          @attr.update(mail1: true)
-        end
-        RegistMailer.regist_amail(@user, @attr).deliver_later
-        redirect_to message_path, notice: "予約完了メールを送信したにゃん"
-      else
-        redirect_to message_path, alert: "この座席はうまってしまったにゃん"
-      end
+    if @attr.time - Time.now < 5.minutes
+      redirect_to message_path, alert: "予約は終了したにゃん"
     else
-      redirect_to message_path, alert: "このURLはみつからないのにゃん"
+      flag = @attr.status == 1 || @attr.time.today?
+      if flag && @user && @user.attr_id == @attr.id
+        if @user.update(status: 1)
+          @attr.update(status: 2, authenticated_addr: @user.addr, authenticated_at: Time.zone.now)
+          if Time.zone.now + 30.minutes > @attr.time
+            @attr.update(mail1: true)
+          end
+          RegistMailer.regist_amail(@user, @attr).deliver
+          redirect_to message_path, notice: "予約完了メールを送信したにゃん"
+        else
+          redirect_to message_path, alert: "この座席はうまってしまったにゃん"
+        end
+      else
+        redirect_to message_path, alert: "このURLはみつからないのにゃん"
+      end
     end
   end
 
@@ -60,7 +62,7 @@ class ReserveController < ApplicationController
 
   def resend_mail
     if (attr = Attr.find_by(authenticated_addr: params[:addr]))
-      RegistMailer.regist_amail(attr.user.where(status: 1).last, attr).deliver_later
+      RegistMailer.regist_amail(attr.user.where(status: 1).last, attr).deliver
     end
     redirect_to message_url, alert: 'メールを送信したにゃん'
   end

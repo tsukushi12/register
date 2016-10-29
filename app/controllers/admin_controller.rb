@@ -50,7 +50,7 @@ class AdminController < ApplicationController
     attrs = Attr.where(time: params[:attr_time].to_time).where("authenticated_addr not ?", nil )
 
     attrs.each do |attr|
-      RegistMailer.regist_call_mail(attr.authenticated_addr).deliver_later
+      RegistMailer.regist_call_mail(attr.authenticated_addr).deliver
       attr.update(mail1: true)
     end
     redirect_to :back, notice: '送信完了'
@@ -61,7 +61,7 @@ class AdminController < ApplicationController
     Attr.where(time: params[:attr_time].to_time).update(status: 3)
 
     attrs.each do |attr|
-      ApolloMailer.apollo_mail(attr).deliver_later
+      ApolloMailer.apollo_mail(attr).deliver
       attr.update(mail2: true)
       attr.user.update(status: 0)
     end
