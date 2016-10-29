@@ -19,6 +19,12 @@ class RegistMailer < ApplicationMailer
   def regist_call_mail(address)
     mail to: address, subject: "公演30分前ですにゃん"
   end
+  
+  def sorry_mail(attr_id)
+    @attr = Attr.find(attr_id)
+    @user = User.where("addr = ? and status = ?", @attr.authenticated_addr, 1).last
+    mail to: @attr.authenticated_addr, subject: "ごめんなさいにゃん！訂正にゃん！"
+  end
 
   private
   def set_smtp_settings

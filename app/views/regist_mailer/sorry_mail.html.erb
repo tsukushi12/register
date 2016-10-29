@@ -1,0 +1,31 @@
+<h1 style="font-weight: lighter;">10月30日の公演を予約された方へ</h1>
+
+<p>
+  10月30日の公演を予約された方に、一部、正確な予約情報の記載されていないメールが送信されていました。<br>
+  大変申し訳ございません。<br>
+  正しい予約情報は以下になります。
+</p>
+
+<div style="border: 1px #666666 solid; padding: 10px; text-align: center;">
+  <p style="margin: 3px; font-weight: bold;">予約日時</p>
+  <%= @attr.time.strftime("%m/%d %H:%M") %>
+  <p style="margin: 3px; font-weight: bold;">座席</p>
+  <%= seat_is(@attr.seat).join(" ") %>
+  <p style="margin: 3px; font-weight: bold;">料金</p>
+  <%= how_much(@attr.seat, @attr.authenticated_at, @attr.time) %>円
+  <p style="margin: 3px; font-weight: bold;">認証コード</p>
+  <%= code_is(@user.url) %>
+</div>
+
+<p>
+  ※このメールは削除せず、当日認証コードを受付にお見せください。<br>
+  その際、料金のお支払いをお願いします。<br>
+  当日は公演10分前までに受付にお越しください<br>
+  お越しにならない場合は予約はキャンセルされます
+</p>
+
+<p>予約のキャンセルは
+  <%= link_to 'こちら', "http://#{host_name}/reserve/cancel_form/#{@user.attr_id}?key=#{@user.url}" %></p>
+
+<p>神戸電子サウンドアトラクション<br>
+  宣伝大使ヴェルにゃん</p>
