@@ -85,12 +85,17 @@
             <%= '済' if attr.mail2 %>
           </td>
           <% if i%10 == 0 %>
-            <td rowspan="10" class="mail-button">
+            <td class="mail-button">
               <%= form_tag admin_apollo_path do %>
                 <%= hidden_field_tag :attr_time, attr.time %>
                 <%= submit_tag 'アポロからのメールを送信',
                                data: { confirm: "アポロのメールを送信します。よろしいですか？"} %>
               <% end %>
+            </td>
+          <% end %>
+          <% if i%10 == 1 %>
+            <td>
+              <%= '送信済みです' if attr.status == 3 %>
             </td>
           <% end %>
           <td>
