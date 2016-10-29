@@ -9,7 +9,7 @@
 <%= seat_is(@attr.seat).join(" ") %>
 
 料金
-<%= how_much(@attr.seat, @attr.authenticated_at) %>円
+<%= how_much(@attr.seat, @attr.authenticated_at, @attr.time) %>円
 
 認証コード
 <%= code_is(@user.url) %>

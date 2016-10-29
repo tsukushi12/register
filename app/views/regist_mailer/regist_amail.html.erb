@@ -10,7 +10,7 @@
   <p style="margin: 3px; font-weight: bold;">座席</p>
   <%= seat_is(@attr.seat).join(" ") %>
   <p style="margin: 3px; font-weight: bold;">料金</p>
-  <%= how_much(@attr.seat, @attr.authenticated_at) %>円
+  <%= how_much(@attr.seat, @attr.authenticated_at, @attr.time) %>円
   <p style="margin: 3px; font-weight: bold;">認証コード</p>
   <%= code_is(@user.url) %>
 </div>

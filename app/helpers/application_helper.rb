@@ -21,26 +21,26 @@ module ApplicationHelper
   def room_is(number)
     number/10*10+1
   end
-  
+
   def code_is(url)
     url[0..5]
   end
-  
+
   def time_is(time)
     time >= Time.zone.parse('2016/10/29')
   end
-  
-  def how_much(seat, time)
+
+  def how_much(seat, regist_time, attr_time)
     price = 200
     if seat_is(seat)[1][-2] == 'S'
       price += 100
     end
-    if !time.nil? && time >= Time.zone.parse('2016/10/29')
+    if !regist_time.nil? && regist_time > attr_time.beginning_of_day
       price += 100
     end
     price
   end
-  
+
   def host_name
     if ENV['G_HOST_NAME'].present?
       ENV['G_HOST_NAME']

@@ -44,7 +44,7 @@
             </td>
             <td>
               <% unless attr.authenticated_at.nil? %>
-                  <%= how_much(attr.seat, attr.authenticated_at) %>円
+                  <%= how_much(attr.seat, attr.authenticated_at, attr.time) %>円
               <% end %>
             </td>
             <td>
