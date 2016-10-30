@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   belongs_to :attr
 
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  VALID_EMAIL_REGEX = /\A[a-zA-Z0-9_\#!$%&`'*+\-{|}~^\/=?\.]+@[a-zA-Z0-9][a-zA-Z0-9\.-]+\z/
   validates :addr,
      presence: true,
      length: { maximum: 255 },
